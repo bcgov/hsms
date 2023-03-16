@@ -1,2 +1,6 @@
-# hsms
-Project between CITZ and OHCS to analyze and display housing data.
+# Housing Supply Monitoring System
+A system that will house any or all data that provides information on each municiplaities housing data to support the Province of BC's housing targets
+The Data will be spatial in nature, however the application will provice several dashboards displaying each municipalities data
+
+# Description
+The application will be hosted in ArcGIS Online which is a cloud-based mapping and analysis solution. It ised to make maps, to analyze data, and to share and collaborate. The data and maps are stored in a secure and private infrastructure and can be configured to meet the needs of changing workflows
