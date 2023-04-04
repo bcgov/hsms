@@ -4,17 +4,28 @@ install.packages('tibble')
 library(readr)
 library(tibble)
 
-masterTable <- read.csv("W:/Path/to/HousingSuitabilitybyTenure.csv")
-mainPath <- "W:/Path/to/output/folder"
+masterTable <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/HousingSuitabilitybyTenure.csv", header=FALSE)
+mainPath <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/TenureTables"
 
-masterTable <- masterTable[,-2]
+#clean table
+masterTable <- masterTable[-c(1:8),]
+masterTable <- masterTable[,-c(2,5)]
+
+num_cols <- ncol(masterTable)
+
+for (i in 5:num_cols)
+{
+  masterTable[2,i] <- masterTable[1,i]
+}
+colnames(masterTable) <- masterTable[2,]
+masterTable <- masterTable[-c(1,2),]
 
 rowStart <- 1
 rowEnd <- 1
 
 #Initialize Final Dataframe
 cNames <- c("Municipality", "1 person", "2 persons", "3 persons", "4 persons", "5 or more persons",
-            "Number of Persons Per Room", "Tenure", "Number of Rooms and Number of Bedrooms" , "Housing Suitability",
+            "Number of Persons Per Room", "Tenure", "Number of Rooms and Number of Bedrooms",
             "Data_Source", "_lastupdate")
 
 exportCombined <- data.frame(matrix(nrow = 0, ncol = length(cNames)))
@@ -23,7 +34,12 @@ colnames(exportCombined) <- cNames
 #fill in category rows
 for (x in 1:nrow(masterTable))
 {
-  
+  if(masterTable[x,4] == "")
+  {
+    #Finds last row of data
+    last_row <- x-1
+    break
+  }
   if(masterTable[x,1] != "")
   {
     oneName <- masterTable[x,1]
@@ -38,19 +54,18 @@ for (x in 1:nrow(masterTable))
     threeName <- masterTable[x,3]
   }     
   
-  if (masterTable[x,4] != "")
-  {
-    fourName <- masterTable[x,4]
-  }
-  
   oneName <- gsub("[0-9]", "", oneName)
   
   masterTable[x,1] <- oneName
   masterTable[x,2] <- twoName
   masterTable[x,3] <- threeName
-  masterTable[x,4] <- fourName
 }
 
+#trim metadata from bottom of Table
+masterTable <- masterTable[1:last_row,]
+
+rowStart <- 1
+rowEnd <- 1
 
 #iterate down shelter column
 for (a in 2:nrow(masterTable))
@@ -68,12 +83,11 @@ for (a in 2:nrow(masterTable))
     
     #splits table into section
     shelterTable <- masterTable[rowStart:rowEnd,]
-    #create folder
+    
     shelterName <- masterTable[rowStart,1]
-    #shelterPath <- paste(mainPath,"/", shelterName, sep = "")
+    
     rowStart <- a
     
-    #dir.create(shelterPath)
     shRowStart <- 1
     
     #iterate down dwelling column
@@ -93,102 +107,74 @@ for (a in 2:nrow(masterTable))
         
         dwellingTable <- shelterTable[shRowStart:shRowEnd,]
         dwellingName <- shelterTable[shRowStart,2]
-        #dwellingPath <- paste(shelterPath,"/", dwellingName, sep = "")
+        
         shRowStart <- b
         
-        #dir.create(dwellingPath)
         dwRowStart <- 1
-        #iterate down housing column
-        for (c in 2:nrow(dwellingTable))
+            
+        #iterate down core table
+        for(d in 2:nrow(dwellingTable))
         {
           
-          if(dwellingTable[c,3] != dwellingTable[dwRowStart,3] | c == nrow(dwellingTable))
+          if (dwellingTable[d,3] != dwellingTable[dwRowStart,3] | d == nrow(dwellingTable))
           {
-            if(dwellingTable[c,3] != dwellingTable[dwRowStart,3])
+            if (dwellingTable[d,3] != dwellingTable[dwRowStart,3])
             {
-              dwRowEnd <- c-1
+              dwRowEnd <- d-1
             }
-            if(c == nrow(dwellingTable))
+            if (d == nrow(dwellingTable))
             {
-              dwRowEnd <- c
+              dwRowEnd <- d
             }
             
-            housingTable <- dwellingTable[dwRowStart:dwRowEnd,]
-            housingName <- dwellingTable[dwRowStart,3]
-            #housingPath <- paste(dwellingPath,"/", housingName, sep = "")
-            dwRowStart <- c
+            coTable <- dwellingTable[dwRowStart:dwRowEnd,]
+            coName <- dwellingTable[dwRowStart,3]
+            coTable <- coTable[, -c(1:3)]
             
-            #dir.create(housingPath)
-            hoRowStart <- 1
+            #create Table to export
+            exportTable <- t(coTable) #transpose table
+            exportTable <- as.data.frame(exportTable)
+            colnames(exportTable) <- exportTable[1,]
+            exportTable <- exportTable[-1, ]
+            exportTable <- rownames_to_column(exportTable, var = "Municipality")
             
-            #iterate down core table
-            for(d in 2:nrow(housingTable))
+            todayStr <- Sys.Date()
+            
+            #coName, housingname, dwellingname, sheltername
+            exportTable[, "Number of Persons Per Room"] <- shelterName
+            exportTable[, "Tenure"] <- dwellingName
+            exportTable[, "Number of Rooms and Number of Bedrooms"] <- housingName
+            exportTable[, "Housing Suitability"] <- coName
+            exportTable[, "Data_Source"] <- "StatsCan"
+            exportTable[, "_lastupdate"] <- todayStr
+            
+            #Clean Municipality strings
+            for (e in 1:nrow(exportTable))
             {
+              muniStr <- exportTable[e,1]
               
-              if (housingTable[d,4] != housingTable[hoRowStart,4] | d == nrow(housingTable))
+              has_two_periods <- grepl("\\..*\\.", muniStr)
+              
+              if (has_two_periods) 
               {
-                if (housingTable[d,4] != housingTable[hoRowStart,4])
-                {
-                  hoRowEnd <- d-1
-                }
-                if (d == nrow(housingTable))
-                {
-                  hoRowEnd <- d
-                }
-                
-                coTable <- housingTable[hoRowStart:hoRowEnd,]
-                coName <- housingTable[hoRowStart,4]
-                #coFile <- paste(housingPath,"/",coName,".csv", sep = "")
-                coTable <- coTable[, -c(1:4)]
-                
-                #create Table to export
-                exportTable <- t(coTable) #transpose table
-                exportTable <- as.data.frame(exportTable)
-                colnames(exportTable) <- exportTable[1,]
-                exportTable <- exportTable[-1, ]
-                exportTable <- rownames_to_column(exportTable, var = "Municipality")
-                
-                todayStr <- Sys.Date()
-                
-                #coName, housingname, dwellingname, sheltername
-                exportTable[, "Number of Persons Per Room"] <- shelterName
-                exportTable[, "Tenure"] <- dwellingName
-                exportTable[, "Number of Rooms and Number of Bedrooms"] <- housingName
-                exportTable[, "Housing Suitability"] <- coName
-                exportTable[, "Data_Source"] <- "StatsCan"
-                exportTable[, "_lastupdate"] <- todayStr
-                
-                #Clean Municipality strings
-                for (e in 1:nrow(exportTable))
-                {
-                  muniStr <- exportTable[e,1]
-                  
-                  has_two_periods <- grepl("\\..*\\.", muniStr)
-                  
-                  if (has_two_periods) 
-                  {
-                    muniStr <- gsub("^([^.]+)\\.", "\\1 ", muniStr) #removes the first period and replaces with a space
-                    muniStr <- gsub("\\..*", "", muniStr) #removes everything after the remaining period 
-                  } else 
-                  {
-                    muniStr <- gsub("\\..*", "", muniStr) #removes everything after the remaining period
-                  }
-                  
-                  exportTable[e,1] <- muniStr
-                }
-                
-                #append table to bottom of combined table
-                exportCombined <- rbind(exportCombined, exportTable)
-                
-                #export table to folder
-                #write.csv(exportTable, coFile, row.names = FALSE)
-                
-                confirmStr = paste("Created table:", coName)
-                print(confirmStr)
-                
-                hoRowStart <- d
+                muniStr <- gsub("^([^.]+)\\.", "\\1 ", muniStr) #removes the first period and replaces with a space
+                muniStr <- gsub("\\..*", "", muniStr) #removes everything after the remaining period 
+              } else 
+              {
+                muniStr <- gsub("\\..*", "", muniStr) #removes everything after the remaining period
               }
+              #removes the i**** after the muni string
+              muniStr <- gsub(" i.*", "", muniStr)
+              exportTable[e,1] <- muniStr
             }
+            
+            #append table to bottom of combined table
+            exportCombined <- rbind(exportCombined, exportTable)
+            
+            confirmStr = paste("Created table:", coName)
+            print(confirmStr)
+            
+            dwRowStart <- d
           }
         }
       }

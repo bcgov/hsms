@@ -99,7 +99,6 @@ for (a in 2:nrow(masterTable))
         
         #dir.create(dwellingPath)
         dwRowStart <- 1
-        #iterate down housing column
             
         #iterate down core table
         for(c in 2:nrow(dwellingTable))

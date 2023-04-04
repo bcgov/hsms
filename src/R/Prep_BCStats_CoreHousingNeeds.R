@@ -5,11 +5,20 @@ library(readr)
 library(tibble)
 
 #read in Table
-masterTable <- read.csv("W:/Path/to/CoreHousingNeeds.csv")
-mainPath <- "W:/Path/to/output/folder"
+masterTable <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CoreHousingNeeds.csv", header = FALSE)
+mainPath <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/TenureTables"
 
-#remove column 4
+#Clean Table
+masterTable <- masterTable[-c(1:8),]
 masterTable <- masterTable[,-4]
+num_cols <- ncol(masterTable)
+
+for (i in 6:num_cols)
+{
+  masterTable[2,i] <- masterTable[1,i]
+}
+colnames(masterTable) <- masterTable[2,]
+masterTable <- masterTable[-c(1,2),]
 
 #Initialize Final Dataframe
 cNames <- c("Municipality","With mortage", "Without Mortgage", "Subsidized housing", "Not subsidized housing", 
@@ -22,7 +31,12 @@ colnames(exportCombined) <- cNames
 #fill in category rows
 for (x in 1:nrow(masterTable))
 {
-  
+  if(masterTable[x,5] == "")
+  {
+    #Finds last row of data
+    last_row <- x-1
+    break
+  }
   if(masterTable[x,1] != "")
   {
     oneName <- masterTable[x,1]
@@ -49,6 +63,9 @@ for (x in 1:nrow(masterTable))
   masterTable[x,3] <- threeName
   masterTable[x,4] <- fourName
 }
+
+#trim metadata from bottom of Table
+masterTable <- masterTable[1:last_row,]
   
 rowStart <- 1
 rowEnd <- 1
@@ -71,10 +88,9 @@ for (a in 2:nrow(masterTable))
     shelterTable <- masterTable[rowStart:rowEnd,]
     
     shelterName <- masterTable[rowStart,1]
-    #shelterPath <- paste(mainPath,"/", shelterName, sep = "")
+   
     rowStart <- a
     
-    #dir.create(shelterPath)
     shRowStart <- 1
     
     #iterate down dwelling column
@@ -173,7 +189,7 @@ for (a in 2:nrow(masterTable))
                   {
                     muniStr <- gsub("\\..*", "", muniStr) #removes everything after the remaining period
                   }
-                  
+                  muniStr <- gsub(" i.*", "", muniStr)
                   exportTable[e,1] <- muniStr
                 }
                 
