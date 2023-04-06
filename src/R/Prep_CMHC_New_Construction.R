@@ -56,9 +56,7 @@ for (a in muniVec)
       {
         #get dateString year value
         dateStr <- currentTable$DateString[e]
-        #dateV <- strsplit(dateStr, split = ' ')
-        dateNum <- as.numeric(dateV[[1]][2])
-        #dateMonth <- dateV[[1]][1]
+        dateNum <- as.numeric(dateStr)
         
         if (dateNum >= 2012 & dateNum < 2023)
         {
@@ -80,7 +78,7 @@ for (a in muniVec)
             aptValueTot <- currentVal
           } else if (currentDwell == "All")
           {
-            allValueTot < -currentVal
+            allValueTot <- currentVal
             
             #append values onto the final export table
             newRow <- c(seriesStr,muniName,dateNum,singleValueTot,semiValueTot,rowValueTot,aptValueTot,allValueTot,categoryStr, filterStr, "CMHC", updateStr)
