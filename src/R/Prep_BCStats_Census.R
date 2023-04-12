@@ -1,25 +1,26 @@
-#Run From here...
 
 #Prepare StatsCan Tables for Spatializing
-install.packages('readr')
-install.packages('dplyr')
-install.packages('tibble')
+install.packages("readr")
+install.packages("dplyr")
+install.packages("tibble")
+install.packages("xlsx")
 
 library(readr)
 library(dplyr)
 library(tibble)
+library(xlsx)
 
-#... to here FIRST
-
-#Run From Here after Packages Installed
 
 #Read in table
-censusTable_a <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CensusProfile2021_A.csv", header = FALSE)
-censusTable_b <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CensusProfile2021_B.csv", header = FALSE)
+censusTable_a <- read.csv("W:/Path/to/CensusProfile2021_A.csv", header = FALSE)
+censusTable_b <- read.csv("W:/Path/to/CensusProfile2021_B.csv", header = FALSE)
+
+outPath <- "W:/Path/to/CensusTables/"
 
 input_table_list <- list(censusTable_a,censusTable_b)
 #check if all tables have the same amount of rows
-check_row <- nrow(input_table_list[1]) 
+
+check_row <- nrow(input_table_list[[1]])
 run_script <- TRUE
 
 for (table in input_table_list)
@@ -31,10 +32,10 @@ for (table in input_table_list)
   }
 }
 
-if(!run_script)
+if(run_script)
 {
   #columns that contain no/ unneeded variables
-  flag_indexes = c(3,5,7,9,11,13,14)
+  flag_indexes <- c(3, 5, 7, 9, 11, 13, 14)
   
   count <- 1
   #Clean Tables
@@ -56,6 +57,23 @@ if(!run_script)
     colnames(input_table) <- input_table[2,]
     input_table <- input_table[-c(1,2),]
     
+    num_row <- nrow(input_table)
+    
+    rInd <- 1
+    #remove bottom metadata
+    
+    while (input_table[rInd,2] != "")
+    {
+      rInd <- rInd + 1
+      
+      if (rInd > num_row)
+      {
+        break
+      }
+    }
+    
+    input_table <- input_table[-c(rInd:num_row),]
+    
     #combine tables
     if(count == 1)
     {
@@ -68,6 +86,7 @@ if(!run_script)
   
   #Split tables by Topic
   censusTableList <- split(censusTable, f = censusTable$Topic)
+  
   
   num <- 1
   
@@ -84,7 +103,7 @@ if(!run_script)
         
     
     listItem <- censusTableList[[num]] #output dataframe for csv export
-    filePath <- paste("W:/Path/to/CensusTables/", elementStr,".csv", sep="")
+    filePath <- paste(outPath, elementStr,".xlsx", sep="")
     
     #remove Topic column
     listItem <- subset(listItem, select = -Topic)
@@ -95,7 +114,11 @@ if(!run_script)
     
     colnames(trItem) <- trItem[1,] #sets first row values to Field names
     trItem <- trItem[-c(1),] #remove row 1
-    trItem <- rownames_to_column(trItem, var = "Municipality")
+    
+    #add rownames to a column named Municipality
+    newItem <- trItem
+    newItem <- cbind(Municipality = rownames(trItem), trItem)
+    trItem <- newItem
     
     today <- Sys.Date()
     trItem[, "data_source"] <- "StatsCan"
@@ -108,7 +131,7 @@ if(!run_script)
     }
     
     #writes to csv file
-    write.csv(trItem, filePath, row.names = FALSE)
+    write.xlsx(trItem, filePath, row.names = FALSE)
     print(paste("Created File:", elementStr))
     
     num <- 1 + num
@@ -117,6 +140,3 @@ if(!run_script)
 {
   print("Error Tables do not Match")
 }
-
-
-
