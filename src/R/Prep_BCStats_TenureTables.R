@@ -6,11 +6,21 @@ library(readr)
 library(tibble)
 library(xlsx)
 
-#Input csv from StatsCan
-master_table <- read.csv("W:/path/to/table.csv", header=FALSE)
-#output folder for excel table
-main_path <- "W:/folder/path/for/output/tables"
+#------------------------------------------------------------------
+#Change value of these three variables before running script
 
+#filepath to raw imported csv from statcan.gc.ca
+table_path <- "W:/path/to/file.csv"
+#filepath to output folder
+main_path <- "W:/path/to/TenureTables"
+#name of output excel file, DO NOT INCLUDE EXTENSION
+outfile_name <- "PLACEHOLDER"
+#------------------------------------------------------------------
+
+#Input csv from StatsCan
+master_table <- read.csv(table_path, header = FALSE)
+
+#output folder for excel table
 num_cols <- ncol(master_table)
 num_rows <- nrow(master_table)
 
@@ -65,6 +75,8 @@ cols_to_delete <- vector(mode = "numeric", length = 0)
 for (cat_col in 1:check_cols)
 {
   cat_str <- master_table[1,cat_col]
+  cat_str <- gsub("[0-9]\\s*$", "", cat_str)
+  master_table[1,cat_col] <- cat_str
   keep_cat <- FALSE
   
   for (cat_row in 1:num_rows)
@@ -72,10 +84,15 @@ for (cat_col in 1:check_cols)
     if (master_table[cat_row,cat_col] != "" & cat_row != 1)
     {
       cat_str <- master_table[cat_row,cat_col]
+      #remove trailing number from cat
+      cat_str <- gsub("[0-9]\\s*$", "", cat_str)
+      master_table[cat_row,cat_col] <- cat_str
+      
       keep_cat <- TRUE
     }
     if (master_table[cat_row,cat_col] == "")
     {
+      cat_str <- gsub("[0-9]\\s*$", "", cat_str)
       master_table[cat_row,cat_col] <- cat_str
     }
   }
@@ -171,7 +188,6 @@ for (r in 2:num_rows)
     #create Table to export
     tr_table <- t(temp_table) #transpose table
     tr_table <- as.data.frame(tr_table)
-    colnames(exportTable) <- tr_table[1,]
     tr_table <- tr_table[-1, ]
     tr_table <- rownames_to_column(tr_table, var = "Municipality")
     
@@ -216,8 +232,7 @@ for(val in 1:num_vals)
   export_table[, ind] <- as.numeric(export_table[, ind])
 }
 
-
-file_name <- paste(main_path, "/", "CoreHousingNeeds.xlsx", sep = "")
+file_name <- paste(main_path, "/", outfile_name, ".xlsx", sep = "")
 
 write.xlsx(export_table, file_name, row.names = FALSE)
 
