@@ -11,12 +11,14 @@ tablePath <- "W:/folder/path/for/output/tables"
 
 #Initializing static variables
 survey_str <- "Rms"
+breakdown_str <- "Historical Time Periods"
+dimension_str <- "Bedroom Type"
+#--------------------------------------------
+#These Variables can be altered to change which datasets will be amalgamated
 #List of series to query
 series_list <- c("Vacancy Rate", "Average Rent", "Average Rent Change", "Median Rent", "Rental Universe", "Summary Statistics")
-dimension_str <- "Bedroom Type"
 #list of filters
 vac_dim_list <- c("Bedroom Type", "Structure Size", "Rent Ranges")
-breakdown_str <- "Historical Time Periods"
 #CSD IDs for each municipalities
 muni_vec <- c("5921007" = "Nanaimo", "5917030" = "Oak Bay",
               "5917034" = "Victoria", "5915004" = "Surrey",
@@ -26,6 +28,8 @@ muni_vec <- c("5921007" = "Nanaimo", "5917030" = "Oak Bay",
 d_filter <- "Row / Apartment"
 r_filter <- "Total"
 season_filter <- "October"
+#-------------------------------------------
+
 category_str <- "Primary Rental Market"
 update_str <- Sys.Date()
 update_str <- format(update_str, "%Y-%m-%d")
@@ -263,9 +267,9 @@ build_table <- function(in_type, in_table, in_master_table, out_type)
           
           c("Classification", "Municipality", "Date_Range", "Vacancy Rate_Percent", "Reliability_Code_vacrate", "Availability_Rate_Percent",
             "Reliability_Code_avlrate", "Average_Rent", "Reliability_Code_avgrent", "Median_Rent", "Reliability_Code_medrent",
-            "Percent_Change", "Reliability_Code_perchg", "Units","Category", "Row_Apartment", "Data_Source", "_lastupdate")
+            "Percent_Change", "Reliability_Code_perchg", "Units", "Category", "Row_Apartment", "Data_Source", "_lastupdate")
           
-          in_master_table[nrow(in_master_table) + 1,] <- new_row
+          in_master_table[nrow(in_master_table) + 1, ] <- new_row
           
           #adds row for all other tables 
         } else
@@ -326,11 +330,11 @@ for(a in muni_vec)
           
         } else
         {
-          print(paste("Downloading", survey_str, series_str, dimension_str,breakdown_str, muni_ID, d_filter))
+          print(paste("Downloading", survey_str, series_str, vac_dim, breakdown_str, muni_ID, d_filter))
           current_table <- get_cmhc(survey_str, series_str, vac_dim, breakdown_str, "Default", muni_ID,
                                     filters = list("dwelling_type_desc_en" = d_filter, "season" = "October"))
           #Run table method
-          combined_R_CMHC <- build_table(bedroom_types, current_table,combined_R_CMHC, vac_dim)
+          combined_R_CMHC <- build_table(bedroom_types, current_table, combined_R_CMHC, vac_dim)
     
         }
       }
