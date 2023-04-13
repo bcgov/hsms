@@ -87,13 +87,14 @@ if(run_script)
   #Split tables by Topic
   censusTableList <- split(censusTable, f = censusTable$Topic)
   
+  table_num <- length(censusTableList)
   
   num <- 1
   
   #Iterate through List of tables
   for (i in censusTableList) 
   {
-   
+    
     elementStr <- names(censusTableList)[num] #use to create name of file
     
     #clean up strings
@@ -132,7 +133,7 @@ if(run_script)
     
     #writes to csv file
     write.xlsx(trItem, filePath, row.names = FALSE)
-    print(paste("Created File:", elementStr))
+    print(paste("Created File", num, "of", table_num, ":", elementStr))
     
     num <- 1 + num
   }
