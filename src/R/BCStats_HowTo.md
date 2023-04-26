@@ -4,7 +4,7 @@
 
 ---
 **Census Profile**:<br>
-Associated R Script - Prep_BC_Stats_Census.R
+Associated R Script - Prep_BC_Stats_Census.R<br>
 Data Link - https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/details/page.cfm
 
 This script is designed to split each topic of the Census Profile into a seperate table, with the topics being
