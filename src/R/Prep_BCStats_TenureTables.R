@@ -10,11 +10,11 @@ library(xlsx)
 #Change value of these three variables before running script
 
 #filepath to raw imported csv from statcan.gc.ca
-table_path <- "W:/path/to/file.csv"
+table_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CoreHousingNeeds.csv"
 #filepath to output folder
-main_path <- "W:/path/to/TenureTables"
+main_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/TenureTables"
 #name of output excel file, DO NOT INCLUDE EXTENSION
-outfile_name <- "PLACEHOLDER"
+outfile_name <- "CoreHousingNeeds"
 #------------------------------------------------------------------
 
 #Input csv from StatsCan

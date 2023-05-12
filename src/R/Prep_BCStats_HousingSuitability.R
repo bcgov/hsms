@@ -1,5 +1,5 @@
 install.packages("readr")
-install.packages('tibble')
+install.packages("tibble")
 
 library(readr)
 library(tibble)
@@ -8,17 +8,17 @@ masterTable <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables
 mainPath <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/TenureTables"
 
 #clean table
-masterTable <- masterTable[-c(1:8),]
-masterTable <- masterTable[,-c(2,5)]
+masterTable <- masterTable[-c(1:8), ]
+masterTable <- masterTable[, -c(2, 5)]
 
 num_cols <- ncol(masterTable)
 
 for (i in 5:num_cols)
 {
-  masterTable[2,i] <- masterTable[1,i]
+  masterTable[2, i] <- masterTable[1, i]
 }
-colnames(masterTable) <- masterTable[2,]
-masterTable <- masterTable[-c(1,2),]
+colnames(masterTable) <- masterTable[2, ]
+masterTable <- masterTable[-c(1, 2), ]
 
 rowStart <- 1
 rowEnd <- 1
@@ -34,7 +34,7 @@ colnames(exportCombined) <- cNames
 #fill in category rows
 for (x in 1:nrow(masterTable))
 {
-  if(masterTable[x,4] == "")
+  if(masterTable[x, 4] == "")
   {
     #Finds last row of data
     last_row <- x-1

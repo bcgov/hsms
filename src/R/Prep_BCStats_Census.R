@@ -10,12 +10,11 @@ library(dplyr)
 library(tibble)
 library(xlsx)
 
-
 #Read in table
-censusTable_a <- read.csv("W:/Path/to/CensusProfile2021_A.csv", header = FALSE)
-censusTable_b <- read.csv("W:/Path/to/CensusProfile2021_B.csv", header = FALSE)
+censusTable_a <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CensusProfile2021_A.csv", header = FALSE)
+censusTable_b <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CensusProfile2021_B.csv", header = FALSE)
 
-outPath <- "W:/Path/to/CensusTables/"
+outPath <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/CensusTables/"
 
 input_table_list <- list(censusTable_a,censusTable_b)
 #check if all tables have the same amount of rows
@@ -23,6 +22,44 @@ input_table_list <- list(censusTable_a,censusTable_b)
 check_row <- nrow(input_table_list[[1]])
 run_script <- TRUE
 
+
+fix_stats_vals <- function(in_table)
+{
+  check_cols <- ncol(in_table) - 1
+  
+  for (ind in 3:check_cols)
+  {
+    check_val <- in_table[1, ind]
+    isNum <- !is.na(as.numeric(check_val))
+    if (isNum)
+    {
+      for(r_comma in nrow(in_table))
+      {
+        #removes thousand separator comma's 
+        x <- in_table[r_comma,ind]
+        x <- gsub(",", "",x)
+        in_table[r_comma,ind] <- x
+      }
+      
+      in_table[,ind] <- as.numeric(in_table[,ind])
+    }
+  }
+  return(in_table)
+}
+
+#function takes target val and divides by total val, and formats
+#args: targetVal, totVal
+#returns: rowVal
+get_dist_val <- function(targetVal, totVal)
+{
+  rowVal <- (targetVal / totVal) * 100
+  rowVal <- format(round(rowVal, 1), nsmall = 1)
+  rowVal <- as.numeric(rowVal)
+  
+  return(rowVal)
+}
+
+#check if tables have same amount of rows
 for (table in input_table_list)
 {
   rows <- nrow(table)
@@ -109,12 +146,18 @@ if(run_script)
     #remove Topic column
     listItem <- subset(listItem, select = -Topic)
     
+    #add row Date_Range and Tenure
+    listItem <- rbind("Total", listItem)
+    listItem <- rbind(2021, listItem)
+    
     #rotates table
     trItem <- t(listItem)
     trItem <- as.data.frame(trItem)
     
     colnames(trItem) <- trItem[1,] #sets first row values to Field names
     trItem <- trItem[-c(1),] #remove row 1
+    colnames(trItem)[1] <- "Date_Range"
+    colnames(trItem)[2] <- "Tenure"
     
     #add rownames to a column named Municipality
     newItem <- trItem
@@ -131,6 +174,47 @@ if(run_script)
       trItem[j,1] <- gsub(".", " ", trItem[j,1], fixed = TRUE)
     }
     
+    trItem <- fix_stats_vals(trItem)
+    
+    #create 25-64 column 10 to 17
+    #15-19
+    if(elementStr == "Agecharacteristics")
+    {
+      #create column after col 17
+      temp_Table_A <- trItem[,1:32]
+      temp_Table_B <- trItem[,33:ncol(trItem)]
+      
+      temp_Table_A$`15 to 19 years.1` <- 0 #31
+      temp_Table_A$`20 to 24 years.1` <- 0 #32
+      temp_Table_A$`25 to 64 years.1` <- 0 #33
+      temp_Table_A$`65 to 84 years.1` <- 0 #34
+
+      trItem <- cbind(temp_Table_A,temp_Table_B)
+      
+      for (r in 1:nrow(trItem))
+      {
+        twSum <- 0
+        sixSum <- 0
+        for (c in 12:19)
+        {
+          twSum <- twSum + as.numeric(trItem[r, c])
+        }
+        for (c2 in 21:24)
+        {
+          sixSum <- sixSum + as.numeric(trItem[r,c2])
+        }
+        totalVal <- as.numeric(trItem[r, 4])
+
+        trItem[r, 33] <- get_dist_val(trItem[r, 10], totalVal)
+        trItem[r, 34] <- get_dist_val(trItem[r, 11], totalVal)
+        trItem[r, 35] <- get_dist_val(twSum, totalVal)
+        trItem[r, 36] <- get_dist_val(sixSum, totalVal)
+
+      }
+      
+    }
+    trItem$Date_Range <- as.numeric(trItem$Date_Range)
+    
     #writes to csv file
     write.xlsx(trItem, filePath, row.names = FALSE)
     print(paste("Created File", num, "of", table_num, ":", elementStr))
@@ -141,3 +225,5 @@ if(run_script)
 {
   print("Error Tables do not Match")
 }
+
+print("Process Complete")
