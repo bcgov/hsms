@@ -4,8 +4,8 @@ install.packages("tibble")
 library(readr)
 library(tibble)
 
-masterTable <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/HousingSuitabilitybyTenure.csv", header=FALSE)
-mainPath <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/TenureTables"
+masterTable <- read.csv("W:/path/to/HousingSuitabilitybyTenure.csv", header=FALSE)
+mainPath <- "W:/path/to/TenureTables"
 
 #clean table
 masterTable <- masterTable[-c(1:8), ]
