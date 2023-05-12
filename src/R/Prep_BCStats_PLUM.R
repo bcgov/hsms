@@ -141,10 +141,10 @@ create_age_dist <- function(in_table, young, old = -1)
 #Start of main
 #-----------------------------------------------------
 
-out_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/PLUM/Output Tables/"
-census_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/CensusTables/"
-table_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/PLUM/Raw Import/cro0172986_bc_cds_csds_its-worksheets_06282019.xlsx"
-lookup_table <- read_excel("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/PLUM and StatsCan Comparison.xlsx", col_names = FALSE)
+out_path <- "W:/PATH/FOR/PLUM/Output Tables/"
+census_path <- "W:/path/of/CensusTables/" #should be the output of the tables produced in the Prep_BCStats_Census Script
+table_path <- "W:/input/table/cro0172986_bc_cds_csds_its-worksheets_06282019.xlsx"
+lookup_table <- read_excel("W:/table/downloaded/from/github/PLUM and StatsCan Comparison.xlsx", col_names = FALSE)#looking to host this on github
 worksheet_list <- c("RD5917", "RD5921", "RD5915")
 
 muni_inc <- c("5921007", "5917030", "5917034", "5915004", "5915022", "5915025", "5915034", "5915043", "5915055", "5915075")
@@ -157,7 +157,6 @@ sheet_num <- 1
         
 for (sheet in worksheet_list)
 {
-  sheet <- "RD5917"
   plum_table <- read_excel(table_path, sheet, col_names = FALSE)
 
   plum_table[1:7, 1] <- plum_table[1:7, 2]
@@ -182,20 +181,13 @@ for (sheet in worksheet_list)
     plum_table <- plum_table[, -cols_to_remove]
   }
   
-  #go down rows and check if string starts with "Total" or "Population"
-  # if it does mark index, and until true again -1 make topic column equal to topic relating to start index matching topic
   topic_string <- "Remove"
   
   plum_table <- cbind('Census Characteristic' = character(nrow(plum_table)), plum_table)
   plum_table <- cbind(Topic = character(nrow(plum_table)), plum_table)
   
   #find match in lookup tables
-  #after search for next time this condition is met to create a range to search
-  #in lookup table find match for total string then find next total in lookup table to create range there
-  #search range of plum table indexes in range of lookup tables
   plum_start <- 1
-  #SHELTER COSTS SECTION IS WRONG IN LOOKUP TABLE REORDER GROUP SO THAT IT WILL BE SEARCHED
-  #CREATE A SPECIAL CASE FOR SHELTER COSTS? BECUASE THE STAT DOESNT HAVE A MATCHING TOTAL GROUP
   for (rw in 2:nrow(plum_table))
   {
     current_var <- plum_table[rw, 3]
@@ -299,8 +291,6 @@ for (sheet in worksheet_list)
   #go through each table and append to equivalent census table
   for (split_table in plum_table_list)
   {
-    
-    #split_table <- plum_table_list[["Household characteristics"]]
     table_name_str <- split_table[1,1]
     split_table <- rbind(head_plum_table, split_table)
     del_rows <- c()
