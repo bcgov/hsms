@@ -11,10 +11,10 @@ library(tibble)
 library(xlsx)
 
 #Read in table
-censusTable_a <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CensusProfile2021_A.csv", header = FALSE)
-censusTable_b <- read.csv("W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CensusProfile2021_B.csv", header = FALSE)
+censusTable_a <- read.csv("W:/path/to/CensusProfile2021_A.csv", header = FALSE)
+censusTable_b <- read.csv("W:/path/to/CensusProfile2021_B.csv", header = FALSE)
 
-outPath <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/CensusTables/"
+outPath <- "W:/path/to/CensusTables/"
 
 input_table_list <- list(censusTable_a,censusTable_b)
 #check if all tables have the same amount of rows
