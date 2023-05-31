@@ -12,7 +12,7 @@ library(xlsx)
 #filepath to raw imported csv from statcan.gc.ca
 table_path <- "W:/path/to/file.csv"
 #filepath to output folder
-main_path <- "W:/path/to/TenureTables"
+main_path <- "W:/path/to/folder/TenureTables"
 #name of output excel file, DO NOT INCLUDE EXTENSION
 outfile_name <- "PLACEHOLDER"
 #------------------------------------------------------------------
@@ -38,7 +38,7 @@ master_table <- master_table[-c(1:top_row - 1),]
 #find how many Category Columns there are
 for (m_col in 1:num_cols)
 {
-  if (master_table[1,m_col] != "")
+  if (master_table[1, m_col] != "")
   {
     num_cats <-m_col
     break
@@ -156,16 +156,13 @@ for (r in 2:num_rows)
   {
     row_end <- r - 1
     temp_table <- master_table[row_start:row_end,]
-    row_start <- r
-    
-    #record cat - 1 names
-    #remove cat - 1
     
     cat_vals <- vector(length = h_cat_num) 
     for(c in 1:length(cat_vals))
     {
-      cat_vals[c] <- master_table[r,c]
+      cat_vals[c] <- master_table[row_start,c]
     }
+    
     for(ind in 1:h_cat_num)
     {
     temp_table <- temp_table[,-1]
@@ -193,6 +190,7 @@ for (r in 2:num_rows)
     
     todayStr <- Sys.Date()
     v_fill <- length(cat_vals)
+    
     for(v in 1:v_fill)
     {
       #c_names for column name cat_vals for column value
@@ -222,6 +220,7 @@ for (r in 2:num_rows)
     }
     #append table to bottom of combined table
     export_table <- rbind(export_table, tr_table)
+    row_start <- r
   }
 }
 
