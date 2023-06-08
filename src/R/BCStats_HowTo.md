@@ -12,9 +12,11 @@ the file name of the tables. The tool is designed for GIS data analysis, thus th
 municipality is a row and each "characteristic" is a column.
 
 The Tool takes the tables as input in the format that they are downloaded from StatsCan. Statistics Canada limits each export to 5 geographies
-So the tools allows for multiple tables, given that each table contains exactly the same variables. By Default the tool takes in 
-2 tables (censusTable_a and censusTable_b). To add additional tables, you can create a new variable with the file path of the tables, and add that
-variable to the input_table_list.
+So the tools allows for multiple tables, given that each table contains exactly the same variables. The Tool will take every table provided in the input folder, be sure that only census tables are in the folder.
+
+This script requires you have the utils.R script to run. This script is designed to be run as a function, be sure to look at what the required packages are as well as a description 
+of the functions arguments. In order to utilize the util.R script the working directory must be set before running the function using the setwd() function, refer to the example in the script if
+needed. 
 
 ---
 **Core Housing Needs, Housing Suitability, Structural Type**:
@@ -35,3 +37,14 @@ download option: CSV download as displayed.
 
 Once the csv is downloaded, use "save as" to save the file to the desired location. This step properly formats the csv file for some strange
 reason, **THE SCRIPT WILL NOT WORK WITHOUT COMPLETING THIS STEP**.
+
+This script is designed to be run as a function, refer to the example at the top of the script for how to call the function and a desctription of the arguments and required packages.
+
+---
+**Custom Census table from PLUM**:
+
+Associated R Script - Prep_BCStats_PLUM.R <br>
+
+This script takes a custom census dataset from PLUM and adds the data to the census tables that are created in the prep_BCStats_Census() function.
+
+The script is designed to be run as a function, and the description of arguments and required packages can be found at the top of the script. this script requires that the utils.R and Prep_BCStats_Census.R script are downloaded, and that setwd() is run with the workspace where utils.R as well as Prep_BCStats_Census.R are located. 
