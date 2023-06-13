@@ -71,8 +71,6 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
                          "Category", "Row_Apartment", "Data_Source", "_lastupdate")
   combined_R_CMHC <- data.frame(matrix(nrow = 0, ncol = length(export_table_cols)))
   colnames(combined_R_CMHC) <- export_table_cols
-  bedroom_types <- c("Bachelor", "1 Bedroom", "2 Bedroom", "3 Bedroom +", "Total")
-  
   
   #Range Table
   range_table_cols <- c("Classification", "Municipality", "Date_Range", "Range_Less_Than_750", "Reliability_Code_750", "Range_750_999", "Reliability_Code_750_999",
@@ -81,8 +79,6 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
                         "Category", "Row_Apartment", "Data_Source", "_lastupdate")
   range_R_CMHC <- data.frame(matrix(nrow = 0, ncol = length(range_table_cols)))
   colnames(range_R_CMHC) <- range_table_cols
-  range_types <- c("Less Than $750", "$750 - $999", "$1,000 - $1,249", "$1,250 - $1,499", "$1,500 +", "Non-Market/Unknown", "Total")
-  
   
   #Structure Size Table
   structure_table_cols <- c("Classification", "Municipality", "Date_Range", "Units_3_5", "Reliability_Code_3_5", "Units_6_19", "Reliability_Code_6_19",
@@ -90,8 +86,6 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
                             "Total", "Reliability_Code_total", "Category", "Row_Apartment", "Data_Source", "_lastupdate")
   structure_R_CMHC <- data.frame(matrix(nrow = 0, ncol = length(structure_table_cols)))
   colnames(structure_R_CMHC) <- structure_table_cols
-  structure_types <- c("3-5 Units", "6-19 Units", "20-49 Units", "50-199 Units", "Total")
-  
   
   #Summary Table
   summary_table_cols <- c("Classification", "Municipality", "Date_Range", "Vacancy Rate_Percent", "Reliability_Code_vacrate", "Availability_Rate_Percent",
@@ -99,8 +93,6 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
                           "Percent_Change", "Reliability_Code_perchg", "Units","Category", "Row_Apartment", "Data_Source", "_lastupdate")
   summary_R_CMHC <- data.frame(matrix(nrow = 0, ncol = length(summary_table_cols)))
   colnames(summary_R_CMHC) <- summary_table_cols
-  summary_types <- c("Vacancy Rate (%)", "Availability Rate (%)", "Average Rent ($)", "Median Rent ($)", "% Change", "Units")
-  
   
   indexes_list <- list(combined_val_indexes, range_val_indexes, structure_val_indexes, summary_val_indexes)
   
@@ -139,7 +131,7 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
             current_table <- get_cmhc(survey_str, series_str, vac_dim, breakdown_str, "Default", muni_ID,
                                       filters = list("dwelling_type_desc_en" = d_filter, "season" = season_filter, "bedroom_count_type_desc_en" = r_filter))
             #Build Rent Ranges Table
-            range_R_CMHC <- build_table(range_types,current_table, range_R_CMHC, vac_dim)
+            range_R_CMHC <- build_table(current_table, range_R_CMHC, vac_dim, muni_name)
             
           } else if (vac_dim == "Structure Size")
           {
@@ -148,7 +140,7 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
                                       filters = list("dwelling_type_desc_en" = d_filter, "season" = season_filter))
     
             #build Structure Size table
-            structure_R_CMHC <- build_table(structure_types, current_table, structure_R_CMHC, vac_dim)
+            structure_R_CMHC <- build_table(current_table, structure_R_CMHC, vac_dim, muni_name)
             
           } else
           {
@@ -156,7 +148,7 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
             current_table <- get_cmhc(survey_str, series_str, vac_dim, breakdown_str, "Default", muni_ID,
                                       filters = list("dwelling_type_desc_en" = d_filter, "season" = season_filter))
             #Run table method
-            combined_R_CMHC <- build_table(bedroom_types, current_table, combined_R_CMHC, vac_dim)
+            combined_R_CMHC <- build_table(current_table, combined_R_CMHC, vac_dim, muni_name)
       
           }
         }
@@ -167,14 +159,14 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
                                     filters = list("dwelling_type_desc_en" = d_filter, "season" = season_filter, "bedroom_count_type_desc_en" = r_filter))
           
           #Run Table Method
-          summary_R_CMHC <- build_table(summary_types, current_table, summary_R_CMHC, series_str)
+          summary_R_CMHC <- build_table(current_table, summary_R_CMHC, series_str, muni_name)
       } else
       {
         print(paste("Downloading", survey_str, series_str, dimension_str,breakdown_str, muni_ID, d_filter))
         current_table <- get_cmhc(survey_str, series_str, dimension_str, breakdown_str, "Default", muni_ID,
                                   filters = list("dwelling_type_desc_en" = d_filter, "season" = season_filter))
         #Run Table method
-        combined_R_CMHC <- build_table(bedroom_types, current_table, combined_R_CMHC, "other")
+        combined_R_CMHC <- build_table(current_table, combined_R_CMHC, "other", muni_name)
         
       }
     }
@@ -182,15 +174,10 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
   
   print("Completed Table Downloads")
   
-  combined_val_indexes <- c(3,4,6,8,10,12)
-  range_val_indexes <- c(3,4,6,8,10,12,14,16)
-  structure_val_indexes <- c(3,4,6,8,10,12,14)
-  summary_val_indexes <- c(3,4,6,8,10,12,14)
-  
-  combined_R_CMHC <- fix_vals(combined_R_CMHC, combined_val_indexes)  
-  range_R_CMHC <- fix_vals(range_R_CMHC, range_val_indexes)
-  structure_R_CMHC <- fix_vals(structure_R_CMHC, structure_val_indexes)
-  summary_R_CMHC <- fix_vals(summary_R_CMHC, summary_val_indexes)
+  combined_R_CMHC <- fix_stats_vals(combined_R_CMHC)  
+  range_R_CMHC <- fix_stats_vals(range_R_CMHC)
+  structure_R_CMHC <- fix_stats_vals(structure_R_CMHC)
+  summary_R_CMHC <- fix_stats_vals(summary_R_CMHC)
   
   #export 4 tables
   bed_file_name <- file.path(tablePath, "CMHC_PR.xlsx")
@@ -204,7 +191,7 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
   write.xlsx(structure_R_CMHC, structure_file_name, row.names = FALSE)
   write.xlsx(summary_R_CMHC, summary_file_name, row.names = FALSE)
   
-  print("Exported CSVs")
+  print("Exported tables")
 }
 
 

@@ -263,35 +263,31 @@ replace_rel <- function(in_rel)
   }
 }
 
-#Fix Data Frames value columns to make them numeric
-
-fix_vals <- function(in_table, in_indexes)
-{
-  for (ind in in_indexes)
-  {
-    for(r_comma in nrow(in_table))
-    {
-      #removes thousand separator comma's 
-      x <- in_table[r_comma,ind]
-      x <- gsub(",", "",x)
-      in_table[r_comma,ind] <- x
-    }
-    
-    in_table[,ind] <- as.numeric(in_table[,ind])
-  }
-  return(in_table)
-}
-
-
 #function to take input table from cmhc and put into final table for export
 #only from 2012-2022
 #in_type is a list of value header strings
 #in_table is the input table from get_cmhc()
 #out_type is a string of the dimension variable
-build_table <- function(in_type, in_table, in_master_table, out_type)
+build_table <- function(in_table, in_master_table, out_type, muni_name)
 {
   five_ch <- FALSE
   six_ch <- FALSE
+  
+  #find in_types
+  rep_str <- as.character(in_table[1,4][[1]])
+  in_type <- c(rep_str)
+  
+  for (r in 2:nrow(in_table))
+  {
+    cur_type <- as.character(in_table[r,4][[1]])
+    if (cur_type == rep_str)
+    {
+      break
+    } else
+    {
+      in_type <- c(in_type, cur_type)
+    }
+  }
   
   for (e in 1:nrow(in_table))
   {
@@ -309,11 +305,6 @@ build_table <- function(in_type, in_table, in_master_table, out_type)
       #pull Value classification and value
       current_bed_type <- as.character(in_table[[4]][e])
       current_val <- in_table$Value[e]
-      
-      #if(is.na(current_val))
-      #{
-      #  current_val <- ""
-      #}
       
       #get reliability string from the Quality column
       if("Quality" %in% colnames(in_table))
@@ -473,7 +464,7 @@ fix_stats_vals <- function(in_table)
         in_table[r_comma,ind] <- x
       }
       
-      in_table[,ind] <- as.numeric(in_table[,ind])
+      suppressWarnings(in_table[,ind] <- as.numeric(in_table[,ind]))
     }
   }
   return(in_table)
