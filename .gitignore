@@ -1,2 +1,4 @@
 /src/R/.lintr
 /src/R/run_scripts.R
+/src/R/.RData
+/src/R/.Rhistory

@@ -1,6 +1,7 @@
 #all required functions for hsms R scripts
 
 #creates income brackets in Incomeofhouseholdsin2020
+create_income_brackets <- function(in_table, bottom, top)
 {
   brack_indexes <- c()
   

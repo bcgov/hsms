@@ -210,7 +210,7 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
       #create Table to export
       tr_table <- t(temp_table) #transpose table
       tr_table <- as.data.frame(tr_table)
-      tr_table <- tr_table[-1, ]
+      #tr_table <- tr_table[-1, ]
       tr_table <- rownames_to_column(tr_table, var = "Municipality")
       
       todayStr <- Sys.Date()
@@ -241,6 +241,10 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
         }
         #removes the i**** after the muni string
         muniStr <- gsub(" i.*", "", muniStr)
+        if (muniStr == "North Vancouver")
+        {
+          muniStr <- "North Vancouver - District"
+        }
         tr_table[e,1] <- muniStr
       }
       #append table to bottom of combined table

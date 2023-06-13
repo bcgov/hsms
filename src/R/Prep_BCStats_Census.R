@@ -102,6 +102,10 @@ prep_BCStats_Census <- function(input_path, out_path)
         {
           muniStr <- strsplit(input_table[2,i],",")
         }
+        if(muniStr[[1]][1] == "North Vancouver")
+        {
+          muniStr[[1]][1] <- "North Vancouver - District"
+        }
         suppressWarnings(input_table[2,i] <- muniStr[1])
       }
       colnames(input_table) <- input_table[2,]

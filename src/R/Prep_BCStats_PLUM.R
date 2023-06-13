@@ -25,7 +25,7 @@
 #input_path: "C:/Documents/censusprofile imports"
 #prep_BCStats_PLUM(out_path, census_path, table_path, input_path)
 
-prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path)
+prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, lookup_table = NULL, worksheet_list = NULL, muni_inc = NULL)
 {
   if (!require("readxl"))
   {
@@ -66,12 +66,20 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path)
   )
   prep_BCStats_Census(input_path, census_path)
   
-  lookup_table <- read.csv("https://raw.githubusercontent.com/bcgov/hsms/main/res/PLUM%20and%20StatsCan%20Comparison.csv", header = FALSE)
   
-  
-  worksheet_list <- c("RD5917", "RD5921", "RD5915", "PR_BC")
-  
-  muni_inc <- c("5921007", "5917030", "5917034", "5915004", "5915022", "5915025", "5915034", "5915043", "5915055", "5915075", "59")
+  if(is.null(lookup_table))
+  {
+    lookup_table <- read.csv("https://raw.githubusercontent.com/bcgov/hsms/main/res/PLUM%20and%20StatsCan%20Comparison.csv", header = FALSE)
+  }
+  #if muni_inc is being input make sure to ensure the worksheets that contain the regions are in worksheet_list
+  if(is.null(worksheet_list))
+  {
+    worksheet_list <- c("RD5917", "RD5909", "RD5915", "RD5933", "PR_BC")
+  }
+  if(is.null(muni_inc))
+  {
+    muni_inc <- c("5909052", "5915011", "5915022", "5915043", "5915046", "5915055", "5917021", "5917030", "5917034", "5933042", "59")
+  }
   
   colnames_inc <- c("Total", "Owners", "Renters")
   
@@ -81,7 +89,7 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path)
           
   for (sheet in worksheet_list)
   {
-    
+    #sheet <- "RD5915"
     plum_table <- read_excel(table_path, sheet, col_names = FALSE)
   
     plum_table[1:7, 1] <- plum_table[1:7, 2]
@@ -98,6 +106,11 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path)
       if (!(current_muni %in% muni_inc) | !(current_stat %in% colnames_inc))
       {
         cols_to_remove <- c(cols_to_remove, cl)
+      }
+      if (current_muni == "5915046")
+      {
+        #print(plum_table[3,cl])
+        plum_table[3, cl] <- "North Vancouver - District"
       }
     }
     
@@ -328,9 +341,6 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path)
         
       }
       
-      
-      
-      
       table_name_str <- gsub(" ", "", table_name_str) 
       table_name_str <- gsub("[()]", "_", table_name_str)
       table_name_str <- gsub("-", "_", table_name_str)
@@ -389,7 +399,7 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path)
             
             for (k in 1:nrow(census_table))
             {
-              households <- as.numeric(census_table[k,9])
+              households <- as.numeric(census_table[k,8])
               population <- as.numeric(census_table$`Population-Total`[k])
               
               head_val <- households / population
