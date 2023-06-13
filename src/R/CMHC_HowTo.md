@@ -16,6 +16,7 @@ Primary Rental Market has a few series that have different statistics which requ
 ---
 ## **New Housing Construction:**
 Associated R Script - Prep_CMHC_New_Construction.R
+This script is designed to run as a function, be sure to look at what the required packages are. The function also requires the utils.R file as well as setting the working directory before running. The top of the script contains definitions for the arguments as well as an example of how to run the function
 
 This tool allows you to choose which datasets to download by defining values in a few lists:
 
@@ -37,6 +38,8 @@ table view. If you require multiple dimensions alterations to the code will be n
 ## **Primary Rental Market:**
 
 Associated R Script - Prep_CMHC_Rental.R
+
+This script is designed to run as a function, be sure to look at what the required packages are. The function also requires the utils.R file as well as setting the working directory before running. The top of the script contains definitions for the arguments as well as an example of how to run the function
 
 This tool creates 4 excel tables:
 CMHC_PR.xlsx - which is the main export table that combines and dataset with the statistics(Bachelor, 1 Bedroom, 2 Bedroom, 3 bedrooms +, and total) along with reliability codes for each
