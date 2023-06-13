@@ -464,7 +464,7 @@ fix_stats_vals <- function(in_table)
         in_table[r_comma,ind] <- x
       }
       
-      suppressWarnings(in_table[,ind] <- as.numeric(in_table[,ind]))
+      in_table[,ind] <- as.numeric(in_table[,ind])
     }
   }
   return(in_table)

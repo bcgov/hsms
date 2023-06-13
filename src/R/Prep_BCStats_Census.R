@@ -194,7 +194,7 @@ prep_BCStats_Census <- function(input_path, out_path)
         trItem[j,1] <- gsub(".", " ", trItem[j,1], fixed = TRUE)
       }
       
-      trItem <- fix_stats_vals(trItem)
+      trItem <- suppressWarnings(fix_stats_vals(trItem))
       
       #create 25-64 column 10 to 17
       #15-19
@@ -269,5 +269,5 @@ prep_BCStats_Census <- function(input_path, out_path)
     print("Error Tables do not Match")
   }
   
-  print("Process Complete")
+  print("Census Tables created")
 }

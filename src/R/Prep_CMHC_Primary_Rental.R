@@ -174,10 +174,10 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
   
   print("Completed Table Downloads")
   
-  combined_R_CMHC <- fix_stats_vals(combined_R_CMHC)  
-  range_R_CMHC <- fix_stats_vals(range_R_CMHC)
-  structure_R_CMHC <- fix_stats_vals(structure_R_CMHC)
-  summary_R_CMHC <- fix_stats_vals(summary_R_CMHC)
+  combined_R_CMHC <- suppressWarnings(fix_stats_vals(combined_R_CMHC))  
+  range_R_CMHC <- suppressWarnings(fix_stats_vals(range_R_CMHC))
+  structure_R_CMHC <- suppressWarnings(fix_stats_vals(structure_R_CMHC))
+  summary_R_CMHC <- suppressWarnings(fix_stats_vals(summary_R_CMHC))
   
   #export 4 tables
   bed_file_name <- file.path(tablePath, "CMHC_PR.xlsx")
