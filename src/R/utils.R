@@ -446,11 +446,11 @@ build_table <- function(in_table, in_master_table, out_type, muni_name)
   return(in_master_table)
 }
 
-fix_stats_vals <- function(in_table)
+fix_stats_vals <- function(in_table, start_row = 3)
 {
   check_cols <- ncol(in_table) - 1
   
-  for (ind in 3:check_cols)
+  for (ind in start_row:check_cols)
   {
     check_val <- in_table[1, ind]
     isNum <- !is.na(as.numeric(check_val))

@@ -42,6 +42,16 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
     return(NULL)
   }
   
+  #links to script containing functions
+  tryCatch(
+    source("utils.R"),
+    
+    error = function(e)
+    {
+      print("utils.R not found, Make sure to set your working directory to the folder containing utils.R")
+      stop()
+    }
+  )
   #Input csv from StatsCan
   master_table <- read.csv(table_path, header = FALSE)
   
@@ -100,7 +110,7 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
   for (cat_col in 1:check_cols)
   {
     cat_str <- master_table[1,cat_col]
-    cat_str <- gsub("[0-9]\\s*$", "", cat_str)
+    cat_str <- gsub("\\s\\d+$", "", cat_str)
     master_table[1,cat_col] <- cat_str
     keep_cat <- FALSE
     
@@ -110,14 +120,14 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
       {
         cat_str <- master_table[cat_row,cat_col]
         #remove trailing number from cat
-        cat_str <- gsub("[0-9]\\s*$", "", cat_str)
+        cat_str <- gsub("\\s\\d+$", "", cat_str)
         master_table[cat_row,cat_col] <- cat_str
         
         keep_cat <- TRUE
       }
       if (master_table[cat_row,cat_col] == "")
       {
-        cat_str <- gsub("[0-9]\\s*$", "", cat_str)
+        cat_str <- gsub("\\s\\d+$", "", cat_str)
         master_table[cat_row,cat_col] <- cat_str
       }
     }
@@ -127,9 +137,12 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
     }
   }
   
-  master_table <- master_table[,-cols_to_delete]
-  num_cats <- num_cats - length(cols_to_delete)
-  num_cols <- num_cols - length(cols_to_delete)
+  if (length(cols_to_delete) != 0)
+  {
+    master_table <- master_table[,-cols_to_delete]
+    num_cats <- num_cats - length(cols_to_delete)
+    num_cols <- num_cols - length(cols_to_delete)
+  }
   
   #get list of cat column headers
   h_cat_num <- num_cats - 1
@@ -139,6 +152,7 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
     current_cat <- colnames(master_table)[cats]
     #clean categories
     current_cat <- gsub(pattern = "\\(.*\\)\\s\\d", replacement = "", x = current_cat)
+    current_cat <- gsub("\\s\\d+$", "", current_cat)
     current_cat <- trimws(current_cat)
     cat_vec <- append(cat_vec,current_cat)
   }
@@ -157,6 +171,7 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
       break
     }
     set_str <- master_table[row,num_cats]
+    set_str <- gsub("\\s\\d+$", "", set_str)
     c_names <- append(c_names, set_str)
   }
   
@@ -210,7 +225,6 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
       #create Table to export
       tr_table <- t(temp_table) #transpose table
       tr_table <- as.data.frame(tr_table)
-      #tr_table <- tr_table[-1, ]
       tr_table <- rownames_to_column(tr_table, var = "Municipality")
       
       todayStr <- Sys.Date()
@@ -241,6 +255,8 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
         }
         #removes the i**** after the muni string
         muniStr <- gsub(" i.*", "", muniStr)
+        muniStr <- gsub("\\s*\\(.*\\)\\s*(DM|CY)", "", muniStr)
+        muniStr <- sub(",.*", "", muniStr)
         if (muniStr == "North Vancouver")
         {
           muniStr <- "North Vancouver - District"
@@ -253,12 +269,9 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
     }
   }
   
-  num_vals <- ncol(export_table) - (h_cat_num + 3)
-  for(val in 1:num_vals)
-  {
-    ind <- val + 1
-    export_table[, ind] <- as.numeric(export_table[, ind])
-  }
+  export_table <- fix_stats_vals(export_table, 2)
+  
+  colnames(export_table) <- c_names
   
   file_path <- file.path(main_path,paste0(outfile_name,".xlsx"))
   

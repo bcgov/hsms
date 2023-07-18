@@ -65,7 +65,15 @@ prep_CMHC_New_Construction <- function(tablePath, seriesList = NULL, dimensionSt
     filterList <- c("Homeowner", "Rental", "Condo", "Co-op", "All")
   }
   #-----------------------------------------------------
-  
+  tryCatch(
+    source("utils.R"),
+    
+    error = function(e)
+    {
+      print("utils.R not found, Make sure to set your working directory to the folder containing utils.R")
+      stop()
+    }
+  )
   surveyStr <- "Scss" #New Housing Construction dataset
   breakdownStr <- "Historical Time Periods"
   categoryStr <- "New Housing Construction"
@@ -152,19 +160,16 @@ prep_CMHC_New_Construction <- function(tablePath, seriesList = NULL, dimensionSt
       }
     }
   }
+  combined_R_CMHC$`Year_Tenure` <- "."
   
-  #convert cols to numeric 3:8
-  for (ind in 3:8)
+  for (yt in 1:nrow(combined_R_CMHC))
   {
-    for (r_comma in nrow(combined_R_CMHC))
-    {
-      #removes thousand separator comma's 
-      x <- combined_R_CMHC[r_comma, ind]
-      x <- gsub(",", "", x)
-      combined_R_CMHC[r_comma, ind] <- x
-    }
-    combined_R_CMHC[, ind] <- as.numeric(combined_R_CMHC[, ind])
+    add_string <- paste(combined_R_CMHC$Date_Range[yt], combined_R_CMHC$Intended_Markets[yt])
+    combined_R_CMHC$`Year_Tenure`[yt] <- add_string
   }
+  
+  combined_R_CMHC <- fix_stats_vals(combined_R_CMHC)
+  
   fileName <- file.path(tablePath,"CMHC_NH.xlsx")
   write.xlsx(combined_R_CMHC, fileName, row.names = FALSE)
   print("Process Complete")
