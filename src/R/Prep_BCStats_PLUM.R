@@ -411,6 +411,63 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, loo
             }
           }
           
+          if (table_name_str == "Householdanddwellingcharacteristics")
+          {
+            print("Adding percent change")
+            #Create Cols for each Per change
+            census_table <- insert_col(census_table, 13, "Total Household by Size % Change")
+            census_table <- insert_col(census_table, 15, "1 Person % Change")
+            census_table <- insert_col(census_table, 17, "2 Persons % Change")
+            census_table <- insert_col(census_table, 19, "3 Persons % Change")
+            census_table <- insert_col(census_table, 21, "4 Persons % Change")
+            census_table <- insert_col(census_table, 23, "5 or More Persons % Change")
+            
+            #calculate percent change from 2006
+            #go row by row
+            for (rw in 1:nrow(census_table))
+            {
+              #get current muni, year, tenure
+              curr_muni <- census_table[rw, 1]
+              curr_year <- census_table[rw, 2]
+              curr_tenure <- census_table[rw, 3]
+              
+              if (curr_year == 2006)
+              {
+                for (value in c(14, 16, 18, 20, 22, 24))
+                {
+                  census_table[rw,value] <- 0
+                }
+              } else
+              {
+                #go row by row again and search for muni then 2006 then tenure
+                check_start <- 1
+                for (ch_rw in check_start:nrow(census_table))
+                {
+                  ch_muni <- census_table[ch_rw, 1]
+                  ch_year <- census_table[ch_rw, 2]
+                  ch_tenure <- census_table[ch_rw, 3]
+                  
+                  if (curr_muni == ch_muni && ch_year == 2006 && curr_tenure == ch_tenure)
+                  {
+                    
+                    for (value in c(13, 15, 17, 19, 21, 23))
+                    {
+                      ch_val <- value + 1
+                      #found 2006 value row to compare
+                      final <- census_table[rw, value]
+                      initial <- census_table[ch_rw,value]
+                      
+                      per_val <- (final-initial)/initial * 100
+                      census_table[rw,ch_val] <- round(per_val,1)
+                    }
+                  }
+                }
+              }
+              
+            }
+            
+          }
+          
           #create year_tenure column
           census_table$`Year_Tenure` <- "."
           

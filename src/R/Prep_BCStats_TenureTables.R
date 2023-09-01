@@ -225,6 +225,9 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
       #create Table to export
       tr_table <- t(temp_table) #transpose table
       tr_table <- as.data.frame(tr_table)
+      
+      
+      
       tr_table <- rownames_to_column(tr_table, var = "Municipality")
       
       todayStr <- Sys.Date()
@@ -272,6 +275,23 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
   export_table <- fix_stats_vals(export_table, 2)
   
   colnames(export_table) <- c_names
+  
+  #create calculated columns for grouped structure types
+  if(outfile_name == "ValueofDwellingbyStrucType")
+  {
+    num_cols <- ncol(export_table)
+    split_col <- num_cols - (h_cat_num + 2)
+    export_table_A <- export_table[,1:split_col]
+    export_table_B <- export_table[,(split_col+1):num_cols]
+    
+    #create Attached Column
+    export_table_A$Attached <- export_table_A$`Other single-attached house` + export_table_A$`Row house` + export_table_A$`Semi-detached house` + export_table_A$`Movable dwelling`
+    
+    #create Apartment in low-rise building
+    export_table_A$`Apartment in low-rise building` <- export_table_A$`Apartment or flat in a duplex` + export_table_A$`Apartment in a building that has fewer than five storeys`
+    
+    export_table <- cbind(export_table_A, export_table_B)
+  }
   
   file_path <- file.path(main_path,paste0(outfile_name,".xlsx"))
   

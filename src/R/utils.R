@@ -481,3 +481,28 @@ get_dist_val <- function(targetVal, totVal)
   
   return(rowVal)
 }
+
+#Insert a new column into a table after the chosen index
+#args: in_table, split_ind, col_name, set_val
+#returns: in_table
+insert_col <- function(in_table, split_ind, col_name, set_val = 0)
+{
+  num_col <- ncol(in_table)
+  b_start <- split_ind + 1
+  
+  in_table_A <- in_table[,1:split_ind]
+  in_table_B <- in_table[,b_start:num_col]
+  
+  in_table_A[,col_name] <- set_val
+  
+  in_table <- cbind(in_table_A, in_table_B)
+  
+  return(in_table)
+}
+
+
+
+
+
+
+
