@@ -205,7 +205,7 @@ prep_BCStats_TenureTables <- function(table_path, main_path, outfile_name)
       
       for(ind in 1:h_cat_num)
       {
-      temp_table <- temp_table[,-1]
+        temp_table <- temp_table[,-1]
       }
       rownames(temp_table) <- temp_table[,1]
       temp_table <- temp_table[,-1]
