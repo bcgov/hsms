@@ -500,9 +500,47 @@ insert_col <- function(in_table, split_ind, col_name, set_val = 0)
   return(in_table)
 }
 
-
-
-
-
-
-
+#Add other Municipalities onto a table and copy the BC Value to those municipalities
+#args: in_table, muni_xlsx, value_col, sheet_num = 1
+#returns: in_table
+add_munis <- function(in_table, muni_xlsx, copy_muni, sheet_num = 1)
+{
+  if (!require("xlsx"))
+  {
+    message("Package 'xlsx' not found. Please install it using install.packages('xlsx').")
+    return(NULL)
+  }
+  
+  muni_names <- c()
+  #add other munis from table
+  muni_tb <- read.xlsx(muni_xlsx,sheet_num)
+  
+  current_col_names <- colnames(in_table)
+  for(i in 1:length(current_col_names))
+  {
+    if (current_col_names[i] == copy_muni)
+    {
+      value_col <- i
+    }
+  }
+  
+  if ("Abbotsford-Mission" %in% current_col_names)
+  {
+    colnames(in_table)[colnames(in_table) == "Abbotsford-Mission"] <- "Abbotsford"
+  }
+  in_table <- as.data.frame(in_table)
+  
+  for (r in 1:nrow(muni_tb))
+  {
+    muni_name <- muni_tb[r,1]
+    if (!(muni_name %in% current_col_names))
+    {
+      in_table[, muni_name] <- NA
+      
+      in_table[, muni_name] <- in_table[,value_col]
+      muni_names <- c(muni_names, muni_name)
+    }
+  }
+  
+  return(in_table)
+}
