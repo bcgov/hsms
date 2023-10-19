@@ -1,0 +1,2132 @@
+{
+      "version": 55,
+      "authoringApp": "ArcGIS Dashboards",
+      "authoringAppVersion": "4.27.0+470f720c22",
+      "maxPaginationRecords": 50000,
+      "mapOverrides": {
+            "highlightColor": "#ff00ff",
+            "trackedFeatureColor": "#0000ff",
+            "trackedFeatureRadius": 100
+      },
+      "theme": "dark",
+      "themeOverrides": {
+            "dashboardBackgroundColor": "#0c5657",
+            "elementBackgroundColor": "#021a1a",
+            "elementOutlineColor": "#dfdfdf"
+      },
+      "numberPrefixOverrides": [
+            {
+                  "key": "yotta",
+                  "symbol": "Y",
+                  "enabled": true
+            },
+            {
+                  "key": "zeta",
+                  "symbol": "Z",
+                  "enabled": true
+            },
+            {
+                  "key": "exa",
+                  "symbol": "E",
+                  "enabled": true
+            },
+            {
+                  "key": "peta",
+                  "symbol": "P",
+                  "enabled": true
+            },
+            {
+                  "key": "tera",
+                  "symbol": "T",
+                  "enabled": true
+            },
+            {
+                  "key": "giga",
+                  "symbol": "G",
+                  "enabled": true
+            },
+            {
+                  "key": "mega",
+                  "symbol": "M",
+                  "enabled": true
+            },
+            {
+                  "key": "kilo",
+                  "symbol": "k",
+                  "enabled": true
+            },
+            {
+                  "key": "base",
+                  "symbol": "",
+                  "enabled": true
+            },
+            {
+                  "key": "deci",
+                  "symbol": "d",
+                  "enabled": false
+            },
+            {
+                  "key": "centi",
+                  "symbol": "c",
+                  "enabled": false
+            },
+            {
+                  "key": "milli",
+                  "symbol": "m",
+                  "enabled": false
+            },
+            {
+                  "key": "micro",
+                  "symbol": "\u00b5",
+                  "enabled": false
+            },
+            {
+                  "key": "nano",
+                  "symbol": "n",
+                  "enabled": false
+            }
+      ],
+      "desktopView": {
+            "widgets": [
+                  {
+                        "id": "31e23fcb-4b2b-4f73-a234-04d43757b442",
+                        "name": "Median Income by Tenure",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Median Household Income by Tenure</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\">Source:&nbsp;<a href=\"https://catalogue.data.gov.bc.ca/dataset/custom-census-reports-2021-2016-2011-2006-\">PLUM</a></span></p>\n",
+                        "description": "",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "05d49c32b177419287703903c60893c4",
+                                          "layerId": 0
+                                    },
+                                    "filter": {
+                                          "type": "filterGroup",
+                                          "condition": "OR",
+                                          "rules": [
+                                                {
+                                                      "type": "filterGroup",
+                                                      "condition": "AND",
+                                                      "rules": [
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Tenure",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "not_equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Total"
+                                                                  }
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    },
+                                    "groupByFields": [
+                                          "Date_Range",
+                                          "Tenure"
+                                    ],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [
+                                          {
+                                                "onStatisticField": "Median_total_income_of_househol",
+                                                "outStatisticFieldName": "value",
+                                                "statisticType": "sum"
+                                          }
+                                    ],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "groupByValues",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Date_Range",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": false,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "minimum": 0,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [],
+                        "guides": [],
+                        "splitBy": {
+                              "fieldName": "Tenure",
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": [
+                                    {
+                                          "key": "Owners",
+                                          "label": "Owners",
+                                          "color": "#9e1e05"
+                                    },
+                                    {
+                                          "key": "Renters",
+                                          "label": "Renters",
+                                          "color": "#0d3b66"
+                                    },
+                                    {
+                                          "key": "Total",
+                                          "label": "Total",
+                                          "color": "#aaff00"
+                                    }
+                              ]
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 0.9,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "backgroundColor": "#7e8572",
+                        "id": "0639e1ce-50bb-47e5-870b-0b5c89b00a2b",
+                        "name": "Rich text (1)",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "type": "richTextWidget",
+                        "text": "<h6><span style=\"font-size:12px\">Legend:</span><strong><span style=\"font-size:12px\"> &nbsp;<span style=\"color:#9e1e05\"> &bull; Owners&nbsp; &nbsp; </span><span style=\"color:#0d3b66\">&bull; Renters</span></span></strong></h6>\n"
+                  },
+                  {
+                        "id": "38cd7b68-7f53-4580-a4de-dd72ab981cbf",
+                        "name": "Municipality Targets",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "type": "mapWidget",
+                        "flashRepeats": 3,
+                        "itemId": "5cac839e430e43158eb509f9b175d62f",
+                        "mapTools": [
+                              {
+                                    "type": "bookmarksTool"
+                              },
+                              {
+                                    "type": "mapContentsTool"
+                              }
+                        ],
+                        "showNavigation": false,
+                        "showLocate": false,
+                        "showCompass": false,
+                        "showPopup": true,
+                        "scalebarStyle": "none",
+                        "groupSelect": "none"
+                  },
+                  {
+                        "id": "721ce21e-4531-4509-b103-2ddfb7d4bfed",
+                        "name": "Mun Heading",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "335d8ee610b9433ea0fc186aa926cbc2",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "maxFeatures": 1,
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "arcadeEnabled": {
+                              "isTrusted": true
+                        },
+                        "expression": "var UprMun = Upper($datapoint.Municipality);\r\n\r\nreturn {\r\n  textColor: '',\r\n  backgroundColor: '#7e8572',\r\n  separatorColor:'#021a1a',\r\n  selectionColor: '',\r\n  selectionTextColor: '',\r\n  attributes: {\r\n   mun: UprMun\r\n  }\r\n}\r\n",
+                        "type": "listWidget",
+                        "selectionMode": "single",
+                        "iconType": "none",
+                        "text": "<p style=\"text-align:center\"><span style=\"font-size:18px\"><strong>{expression/mun}</strong></span></p>\n\n<p style=\"text-align:center\">&nbsp;</p>\n",
+                        "showFilter": false
+                  },
+                  {
+                        "id": "746e040d-e089-4fe1-88d9-a8382d5be22d",
+                        "name": "Median Shelter Costs",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Median Monthly Shelter Costs ($)</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\">Source:&nbsp;<a href=\"https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E\">StatsCan</a></span></p>\n",
+                        "description": "",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "2daf4851958f4264ab376bc91af875ae",
+                                          "layerId": 0
+                                    },
+                                    "filter": {
+                                          "type": "filterGroup",
+                                          "condition": "OR",
+                                          "rules": [
+                                                {
+                                                      "type": "filterGroup",
+                                                      "condition": "AND",
+                                                      "rules": [
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Date_Range",
+                                                                        "type": "double"
+                                                                  },
+                                                                  "operator": "equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": 2021
+                                                                  }
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [
+                                          {
+                                                "onStatisticField": "Median_monthly_shelter_costs_fo",
+                                                "outStatisticFieldName": "Median_monthly_shelter_costs_fo",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "Median_monthly_shelter_costs_1",
+                                                "outStatisticFieldName": "Median_monthly_shelter_costs_1",
+                                                "statisticType": "sum"
+                                          }
+                                    ],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "fields",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "category",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [
+                                    {
+                                          "key": "Median_monthly_shelter_costs_fo",
+                                          "label": "Owners"
+                                    },
+                                    {
+                                          "key": "Median_monthly_shelter_costs_1",
+                                          "label": "Renters"
+                                    }
+                              ],
+                              "byCategoryColors": true,
+                              "colors": [
+                                    {
+                                          "key": "Median monthly shelter costs for owned dwellings ($)",
+                                          "color": "#9e1e05"
+                                    },
+                                    {
+                                          "key": "Median monthly shelter costs for rented dwellings ($)",
+                                          "color": "#0d3b66"
+                                    }
+                              ],
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 11,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": false,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "minimum": 0,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "value",
+                                    "lineColor": "#ffaa00"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 0.9,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "b312bf28-e8a3-4684-8762-399b989840a8",
+                        "name": "Share New Mortgage",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Share of New Mortgage Holders (credit score &lt; 660)</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\">Source:&nbsp;<a href=\"https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-data/data-tables/mortgage-and-debt\">CMHC</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "ad74a07cc6834f7c80ac5e1135397272",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Date_Range ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Date_Range",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 7,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "fontSize": 9,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "fontSize": 7,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "minimum": 0,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Share",
+                                    "title": "Share",
+                                    "lineColor": "#b0482c"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "line",
+                              "fillAlphas": 0,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "round",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 6,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "2080ed05-f7f2-4c1d-b075-3f7a67005870",
+                        "name": "Avg Monthly Payments",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Avg. Scheduled Monthly Payments (New Mortgage Loans)</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\">Source:&nbsp;<a href=\"https://www.cmhc-schl.gc.ca/professionals/housing-markets-data-and-research/housing-data/data-tables/mortgage-and-debt\">CMHC</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "53c891fa0e2f4c908232eda9ad611a71",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Date_Range ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Date_Range",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 7,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": false,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "fontSize": 9,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "fontSize": 9,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "minimum": 0,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Payment",
+                                    "title": "Payment",
+                                    "lineColor": "#b0482c"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "line",
+                              "fillAlphas": 0,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "round",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 6,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "f898dfe9-ca21-44ad-9233-e6fe2ecab2cd",
+                        "name": "Investor Spec",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Investment Status ($)</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\">Source:&nbsp;<a href=\"https://www150.statcan.gc.ca/n1/pub/46-28-0001/2023001/article/00001-eng.htm#a5_1\">StatsCan</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "0ab2946b9973483cba78d6e584fed2df",
+                                          "layerId": 0
+                                    },
+                                    "filter": {
+                                          "type": "filterGroup",
+                                          "condition": "OR",
+                                          "rules": [
+                                                {
+                                                      "type": "filterGroup",
+                                                      "condition": "AND",
+                                                      "rules": [
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Ownership_type",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Total, all ownership types"
+                                                                  }
+                                                            },
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Investment_status",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "not_equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Total, all investment property statuses"
+                                                                  }
+                                                            },
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Investment_status",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "not_equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Unspecified investment property status"
+                                                                  }
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Investment_status",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [
+                                    {
+                                          "key": "Unspecified investment property status",
+                                          "label": "Unspecified investment property status"
+                                    },
+                                    {
+                                          "key": "Total, all investment property statuses",
+                                          "label": "Total, all investment property statuses"
+                                    },
+                                    {
+                                          "key": "Owner-occupied investment property",
+                                          "label": "Owner-occupied investment"
+                                    },
+                                    {
+                                          "key": "Non-investment property",
+                                          "label": "Non-investment"
+                                    },
+                                    {
+                                          "key": "Investment property",
+                                          "label": "Investment"
+                                    }
+                              ],
+                              "byCategoryColors": true,
+                              "colors": [
+                                    {
+                                          "key": "Owner-occupied investment property",
+                                          "color": "#6e8c91"
+                                    },
+                                    {
+                                          "key": "Non-investment property",
+                                          "color": "#faf0ca"
+                                    },
+                                    {
+                                          "key": "Investment property",
+                                          "color": "#d16a47"
+                                    }
+                              ],
+                              "labelsPlacement": "staggered",
+                              "labelRotation": 0
+                        },
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": false,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Total_all_property_types",
+                                    "title": "Total, all property types",
+                                    "lineColor": "#ffaa00"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 0.9,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "e6b78b11-2b83-4a3f-8252-5ca6f176ea21",
+                        "name": "Avg Value of Dwelling",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "2daf4851958f4264ab376bc91af875ae",
+                                          "layerId": 0
+                                    },
+                                    "filter": {
+                                          "type": "filterGroup",
+                                          "condition": "OR",
+                                          "rules": [
+                                                {
+                                                      "type": "filterGroup",
+                                                      "condition": "AND",
+                                                      "rules": [
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Date_Range",
+                                                                        "type": "double"
+                                                                  },
+                                                                  "operator": "equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": 2021
+                                                                  }
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "maxFeatures": 1,
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "type": "indicatorWidget",
+                        "defaultSettings": {
+                              "topSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {
+                                          "text": null
+                                    }
+                              },
+                              "middleSection": {
+                                    "fontSize": 160,
+                                    "textInfo": {
+                                          "text": "$ {element/value}"
+                                    }
+                              },
+                              "bottomSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {
+                                          "text": "2021 Avg. Owned Dwelling Value"
+                                    }
+                              }
+                        },
+                        "comparison": "none",
+                        "valueField": "Average_value_of_dwellings_",
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "percentageFormat": {
+                              "name": "percentage",
+                              "prefix": false,
+                              "style": "percent",
+                              "useGrouping": true
+                        },
+                        "ratioFormat": {
+                              "name": "ratio",
+                              "prefix": false,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 2
+                        },
+                        "valueType": "feature",
+                        "noValueState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        }
+                  },
+                  {
+                        "id": "3b00e4d4-f174-43aa-97dc-41bb51c8dc84",
+                        "name": "Med Value of Dwelling",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "2daf4851958f4264ab376bc91af875ae",
+                                          "layerId": 0
+                                    },
+                                    "filter": {
+                                          "type": "filterGroup",
+                                          "condition": "OR",
+                                          "rules": [
+                                                {
+                                                      "type": "filterGroup",
+                                                      "condition": "AND",
+                                                      "rules": [
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Date_Range",
+                                                                        "type": "double"
+                                                                  },
+                                                                  "operator": "equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": 2021
+                                                                  }
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "maxFeatures": 1,
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "type": "indicatorWidget",
+                        "defaultSettings": {
+                              "topSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {
+                                          "text": null
+                                    }
+                              },
+                              "middleSection": {
+                                    "fontSize": 160,
+                                    "textInfo": {
+                                          "text": "$ {element/value}"
+                                    }
+                              },
+                              "bottomSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {
+                                          "text": "2021 Med. Owned Dwelling Value"
+                                    }
+                              }
+                        },
+                        "comparison": "none",
+                        "valueField": "Median_value_of_dwellings_",
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "percentageFormat": {
+                              "name": "percentage",
+                              "prefix": false,
+                              "style": "percent",
+                              "useGrouping": true
+                        },
+                        "ratioFormat": {
+                              "name": "ratio",
+                              "prefix": false,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 2
+                        },
+                        "valueType": "feature",
+                        "noValueState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        }
+                  },
+                  {
+                        "id": "29b0df21-c3be-4ef7-93aa-ac8a7198b685",
+                        "name": "Value Dwelling",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Value of Owner-occupied Dwellings by Type ($)</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\">Source:&nbsp;<a href=\"https://catalogue.data.gov.bc.ca/dataset/custom-census-reports-2021-2016-2011-2006-\">PLUM</a></span></p>\n",
+                        "description": "",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "6d0583371a0649f69cb4e12900cb200e",
+                                          "layerId": 0
+                                    },
+                                    "filter": {
+                                          "type": "filterGroup",
+                                          "condition": "OR",
+                                          "rules": [
+                                                {
+                                                      "type": "filterGroup",
+                                                      "condition": "AND",
+                                                      "rules": [
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Value",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "not_equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Average value of dwellings $"
+                                                                  }
+                                                            },
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Value",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "not_equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Median value of dwelling $"
+                                                                  }
+                                                            },
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Value",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "not_equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Total - Value (owner-estimated) of dwelling"
+                                                                  }
+                                                            },
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Presence_of_mortgage_payments",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Total - Presence of mortgage payments"
+                                                                  }
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Value ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Value",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [
+                                    {
+                                          "key": "Less than $100,000",
+                                          "label": "< $100,000"
+                                    },
+                                    {
+                                          "key": "$750,000 to $999,999",
+                                          "label": "$750K - $999K"
+                                    },
+                                    {
+                                          "key": "$600,000 to $749,000",
+                                          "label": "$600K - $749K"
+                                    },
+                                    {
+                                          "key": "$500,000 to $599,999",
+                                          "label": "$500K - $599K"
+                                    },
+                                    {
+                                          "key": "$400,000 to $499,999",
+                                          "label": "$400K - $499K"
+                                    },
+                                    {
+                                          "key": "$350,000 to $399,999",
+                                          "label": "$350K - $399K"
+                                    },
+                                    {
+                                          "key": "$300,000 to $349,999",
+                                          "label": "$300K - $349K"
+                                    },
+                                    {
+                                          "key": "$250,000 to $299,999",
+                                          "label": "$250K - $299K"
+                                    },
+                                    {
+                                          "key": "$200,000 to $249,999",
+                                          "label": "$200K - $249K"
+                                    },
+                                    {
+                                          "key": "$150,000 to $199,999",
+                                          "label": "$150K - $199K"
+                                    },
+                                    {
+                                          "key": "$100,000 to $149,999",
+                                          "label": "$100K - $149K"
+                                    },
+                                    {
+                                          "key": "$1,500,000 or more",
+                                          "label": "$1.500MM+"
+                                    },
+                                    {
+                                          "key": "$1,000,000 to $1,499,999",
+                                          "label": "$1MM - $1.49MM"
+                                    }
+                              ],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 9,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 270,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "regular",
+                              "integersOnly": false,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": true,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Single_detached_house",
+                                    "title": "Single-detached house",
+                                    "lineColor": "#0d3b66"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Attached",
+                                    "title": "Attached",
+                                    "lineColor": "#faf0ca"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Apartment_in_a_building_that_ha",
+                                    "title": "Apartment in a building that has 5+ storys",
+                                    "lineColor": "#faf0ca"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Apartment_in_low_rise_building",
+                                    "title": "Apartment in low-rise building",
+                                    "lineColor": "#cc8767"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": true,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 1,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  }
+            ],
+            "header": {
+                  "selectors": [
+                        {
+                              "id": "3a932a9a-fb33-4f3e-9f36-635b691605c6",
+                              "name": "Municipality",
+                              "caption": "Municipality",
+                              "showLastUpdate": false,
+                              "noDataState": {
+                                    "verticalAlignment": "middle",
+                                    "showCaption": true,
+                                    "showDescription": true
+                              },
+                              "noFilterState": {
+                                    "verticalAlignment": "middle",
+                                    "showCaption": true,
+                                    "showDescription": true
+                              },
+                              "events": [
+                                    {
+                                          "type": "selectionChanged",
+                                          "actions": [
+                                                {
+                                                      "targets": [
+                                                            {
+                                                                  "targetId": "721ce21e-4531-4509-b103-2ddfb7d4bfed#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "2080ed05-f7f2-4c1d-b075-3f7a67005870#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "31e23fcb-4b2b-4f73-a234-04d43757b442#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "746e040d-e089-4fe1-88d9-a8382d5be22d#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "b312bf28-e8a3-4684-8762-399b989840a8#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "f898dfe9-ca21-44ad-9233-e6fe2ecab2cd#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "3b00e4d4-f174-43aa-97dc-41bb51c8dc84#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "e6b78b11-2b83-4a3f-8252-5ca6f176ea21#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "29b0df21-c3be-4ef7-93aa-ac8a7198b685#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ],
+                                                      "type": "filter"
+                                                },
+                                                {
+                                                      "targets": [
+                                                            {
+                                                                  "targetId": "38cd7b68-7f53-4580-a4de-dd72ab981cbf",
+                                                                  "by": "geometry",
+                                                                  "requiresSelection": false
+                                                            }
+                                                      ],
+                                                      "type": "flashGeometry"
+                                                },
+                                                {
+                                                      "targets": [
+                                                            {
+                                                                  "targetId": "38cd7b68-7f53-4580-a4de-dd72ab981cbf",
+                                                                  "by": "geometry",
+                                                                  "requiresSelection": false
+                                                            }
+                                                      ],
+                                                      "type": "zoom"
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "presentationMode": "dropdown",
+                              "datasets": [
+                                    {
+                                          "type": "serviceDataset",
+                                          "name": "main",
+                                          "dataSource": {
+                                                "type": "layerDataSource",
+                                                "itemId": "5cac839e430e43158eb509f9b175d62f",
+                                                "layerId": "188b198393a-layer-1"
+                                          },
+                                          "groupByFields": [
+                                                "ADMIN_AREA_ABBREVIATION"
+                                          ],
+                                          "orderByFields": [
+                                                "ADMIN_AREA_ABBREVIATION ASC"
+                                          ],
+                                          "statisticDefinitions": [
+                                                {
+                                                      "onStatisticField": "ADMIN_AREA_ABBREVIATION",
+                                                      "outStatisticFieldName": "count_result",
+                                                      "statisticType": "count"
+                                                }
+                                          ],
+                                          "maxFeatures": 50,
+                                          "clientSideStatistics": false,
+                                          "outFields": [
+                                                "*"
+                                          ],
+                                          "returnDistinctValues": false,
+                                          "allowSourceDownload": false,
+                                          "allowSummaryDownload": false
+                                    }
+                              ],
+                              "type": "categorySelectorWidget",
+                              "category": {
+                                    "type": "groupByValues",
+                                    "labelOverrides": []
+                              },
+                              "selection": {
+                                    "operator": "equal",
+                                    "allowNone": true,
+                                    "noneLabel": "Select an Option",
+                                    "noneLabelPlacement": "first",
+                                    "type": "single",
+                                    "defaultSelection": "first"
+                              },
+                              "displayType": "list",
+                              "showFilter": false,
+                              "maxSize": "compact"
+                        }
+                  ],
+                  "type": "header",
+                  "subtitlePlacement": "sameLine",
+                  "logoSize": "small",
+                  "showMargin": true,
+                  "backgroundImageSizing": "fit-height",
+                  "normalBackgroundImagePlacement": "left",
+                  "horizontalBackgroundImagePlacement": "top",
+                  "showSignOutMenu": true,
+                  "menuLinks": []
+            },
+            "layout": {
+                  "type": "dockingLayout",
+                  "rootElement": {
+                        "width": 1,
+                        "height": 1,
+                        "id": "6283eb69-01e3-4f66-81f9-b3316cf009e1",
+                        "elements": [
+                              {
+                                    "width": 0.31456162341560845,
+                                    "height": 1,
+                                    "type": "itemLayoutElement",
+                                    "id": "29b0df21-c3be-4ef7-93aa-ac8a7198b685"
+                              },
+                              {
+                                    "width": 0.281577125141862,
+                                    "height": 1,
+                                    "id": "dbe35832-3f96-4799-b295-911917fd9135",
+                                    "elements": [
+                                          {
+                                                "width": 1,
+                                                "height": 0.04476028829815081,
+                                                "type": "itemLayoutElement",
+                                                "id": "0639e1ce-50bb-47e5-870b-0b5c89b00a2b"
+                                          },
+                                          {
+                                                "width": 1,
+                                                "height": 0.28099983514052135,
+                                                "type": "itemLayoutElement",
+                                                "id": "31e23fcb-4b2b-4f73-a234-04d43757b442"
+                                          },
+                                          {
+                                                "width": 1,
+                                                "height": 0.28539565077007367,
+                                                "type": "itemLayoutElement",
+                                                "id": "746e040d-e089-4fe1-88d9-a8382d5be22d"
+                                          },
+                                          {
+                                                "width": 1,
+                                                "height": 0.3888442257912539,
+                                                "id": "37804299-5b09-4a0f-ad74-18ed3047d574",
+                                                "elements": [
+                                                      {
+                                                            "width": 1,
+                                                            "height": 0.136444500531419,
+                                                            "type": "itemLayoutElement",
+                                                            "id": "721ce21e-4531-4509-b103-2ddfb7d4bfed"
+                                                      },
+                                                      {
+                                                            "width": 1,
+                                                            "height": 0.28998373100373886,
+                                                            "id": "27dea1b8-31cc-4a7f-b87f-fe7df956f309",
+                                                            "elements": [
+                                                                  {
+                                                                        "width": 0.5,
+                                                                        "height": 1,
+                                                                        "type": "itemLayoutElement",
+                                                                        "id": "3b00e4d4-f174-43aa-97dc-41bb51c8dc84"
+                                                                  },
+                                                                  {
+                                                                        "width": 0.5,
+                                                                        "height": 1,
+                                                                        "type": "itemLayoutElement",
+                                                                        "id": "e6b78b11-2b83-4a3f-8252-5ca6f176ea21"
+                                                                  }
+                                                            ],
+                                                            "type": "groupLayoutElement",
+                                                            "orientation": "col"
+                                                      },
+                                                      {
+                                                            "width": 1,
+                                                            "height": 0.5735717684648426,
+                                                            "type": "itemLayoutElement",
+                                                            "id": "38cd7b68-7f53-4580-a4de-dd72ab981cbf"
+                                                      }
+                                                ],
+                                                "type": "groupLayoutElement",
+                                                "orientation": "row"
+                                          }
+                                    ],
+                                    "type": "stackLayoutElement",
+                                    "orientation": "row"
+                              },
+                              {
+                                    "width": 0.4038612514425294,
+                                    "height": 1,
+                                    "id": "177e7594-046b-4892-81e6-70a924899576",
+                                    "elements": [
+                                          {
+                                                "width": 1,
+                                                "height": 0.3608,
+                                                "type": "itemLayoutElement",
+                                                "id": "2080ed05-f7f2-4c1d-b075-3f7a67005870"
+                                          },
+                                          {
+                                                "width": 1,
+                                                "height": 0.385190243902439,
+                                                "type": "itemLayoutElement",
+                                                "id": "b312bf28-e8a3-4684-8762-399b989840a8"
+                                          },
+                                          {
+                                                "width": 1,
+                                                "height": 0.254009756097561,
+                                                "type": "itemLayoutElement",
+                                                "id": "f898dfe9-ca21-44ad-9233-e6fe2ecab2cd"
+                                          }
+                                    ],
+                                    "type": "stackLayoutElement",
+                                    "orientation": "row"
+                              }
+                        ],
+                        "type": "stackLayoutElement",
+                        "orientation": "col"
+                  }
+            },
+            "type": "desktop",
+            "settings": {
+                  "allowElementResizing": false,
+                  "allowElementExpansion": true,
+                  "allowReset": false
+            }
+      },
+      "elementMappings": {}
+}

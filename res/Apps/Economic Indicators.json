@@ -1,0 +1,2569 @@
+{
+      "version": 55,
+      "authoringApp": "ArcGIS Dashboards",
+      "authoringAppVersion": "4.27.0+470f720c22",
+      "maxPaginationRecords": 50000,
+      "mapOverrides": {
+            "highlightColor": "#ff00ff",
+            "trackedFeatureColor": "#0000ff",
+            "trackedFeatureRadius": 100
+      },
+      "theme": "dark",
+      "themeOverrides": {
+            "dashboardBackgroundColor": "#0c5657",
+            "elementBackgroundColor": "#021a1a",
+            "elementOutlineColor": "#dfdfdf"
+      },
+      "numberPrefixOverrides": [
+            {
+                  "key": "yotta",
+                  "symbol": "Y",
+                  "enabled": true
+            },
+            {
+                  "key": "zeta",
+                  "symbol": "Z",
+                  "enabled": true
+            },
+            {
+                  "key": "exa",
+                  "symbol": "E",
+                  "enabled": true
+            },
+            {
+                  "key": "peta",
+                  "symbol": "P",
+                  "enabled": true
+            },
+            {
+                  "key": "tera",
+                  "symbol": "T",
+                  "enabled": true
+            },
+            {
+                  "key": "giga",
+                  "symbol": "G",
+                  "enabled": true
+            },
+            {
+                  "key": "mega",
+                  "symbol": "M",
+                  "enabled": true
+            },
+            {
+                  "key": "kilo",
+                  "symbol": "k",
+                  "enabled": true
+            },
+            {
+                  "key": "base",
+                  "symbol": "",
+                  "enabled": true
+            },
+            {
+                  "key": "deci",
+                  "symbol": "d",
+                  "enabled": false
+            },
+            {
+                  "key": "centi",
+                  "symbol": "c",
+                  "enabled": false
+            },
+            {
+                  "key": "milli",
+                  "symbol": "m",
+                  "enabled": false
+            },
+            {
+                  "key": "micro",
+                  "symbol": "\u00b5",
+                  "enabled": false
+            },
+            {
+                  "key": "nano",
+                  "symbol": "n",
+                  "enabled": false
+            }
+      ],
+      "desktopView": {
+            "widgets": [
+                  {
+                        "id": "dec504d0-dad9-460d-ba03-8cbad1be11e1",
+                        "name": "nocs",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">2021 No. of Workers by Occupation (NOC)</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:</span>&nbsp;<a href=\"https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E\">StatsCan</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "98a8eaa2d56f49528c18af0514080822",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [
+                                          {
+                                                "onStatisticField": "F0_Legislative_and_senior_manag",
+                                                "outStatisticFieldName": "F0_Legislative_and_senior_manag",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F1_Business_finance_and_admini",
+                                                "outStatisticFieldName": "F1_Business_finance_and_admini",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F2_Natural_and_applied_sciences",
+                                                "outStatisticFieldName": "F2_Natural_and_applied_sciences",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F3_Health_occupations",
+                                                "outStatisticFieldName": "F3_Health_occupations",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F4_Occupations_in_education_la",
+                                                "outStatisticFieldName": "F4_Occupations_in_education_la",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F5_Occupations_in_art_culture_",
+                                                "outStatisticFieldName": "F5_Occupations_in_art_culture_",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F6_Sales_and_service_occupation",
+                                                "outStatisticFieldName": "F6_Sales_and_service_occupation",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F7_Trades_transport_and_equipm",
+                                                "outStatisticFieldName": "F7_Trades_transport_and_equipm",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F8_Natural_resources_agricultu",
+                                                "outStatisticFieldName": "F8_Natural_resources_agricultu",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "F9_Occupations_in_manufacturing",
+                                                "outStatisticFieldName": "F9_Occupations_in_manufacturing",
+                                                "statisticType": "sum"
+                                          }
+                                    ],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "fields",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "category",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [
+                                    {
+                                          "key": "F0_Legislative_and_senior_manag",
+                                          "label": "Legislative, senior mngmnt."
+                                    },
+                                    {
+                                          "key": "F1_Business_finance_and_admini",
+                                          "label": "Business, finance, admin."
+                                    },
+                                    {
+                                          "key": "F2_Natural_and_applied_sciences",
+                                          "label": "Natural, applied sciences, related"
+                                    },
+                                    {
+                                          "key": "F3_Health_occupations",
+                                          "label": "Health"
+                                    },
+                                    {
+                                          "key": "F4_Occupations_in_education_la",
+                                          "label": "Education, law, social, community, gov't."
+                                    },
+                                    {
+                                          "key": "F5_Occupations_in_art_culture_",
+                                          "label": "Art, culture, recreation, sport"
+                                    },
+                                    {
+                                          "key": "F6_Sales_and_service_occupation",
+                                          "label": "Sales, service"
+                                    },
+                                    {
+                                          "key": "F7_Trades_transport_and_equipm",
+                                          "label": "Trades, transport, equipment ops., related"
+                                    },
+                                    {
+                                          "key": "F8_Natural_resources_agricultu",
+                                          "label": "Natural resources, agriculture, related prod."
+                                    },
+                                    {
+                                          "key": "F9_Occupations_in_manufacturing",
+                                          "label": "Manufacturing, utilities"
+                                    }
+                              ],
+                              "byCategoryColors": true,
+                              "colors": [
+                                    {
+                                          "key": "0 Legislative and senior management occupations",
+                                          "color": "#0d3b66"
+                                    },
+                                    {
+                                          "key": "1 Business, finance and administration occupations",
+                                          "color": "#48687f"
+                                    },
+                                    {
+                                          "key": "2 Natural and applied sciences and related occupations",
+                                          "color": "#839598"
+                                    },
+                                    {
+                                          "key": "3 Health occupations",
+                                          "color": "#bec2b1"
+                                    },
+                                    {
+                                          "key": "4 Occupations in education, law and social, community and government services",
+                                          "color": "#faf0ca"
+                                    },
+                                    {
+                                          "key": "5 Occupations in art, culture, recreation and sport",
+                                          "color": "#e7c6a2"
+                                    },
+                                    {
+                                          "key": "6 Sales and service occupations",
+                                          "color": "#d59c7b"
+                                    },
+                                    {
+                                          "key": "7 Trades, transport and equipment operators and related occupations",
+                                          "color": "#c27253"
+                                    },
+                                    {
+                                          "key": "8 Natural resources, agriculture and related production occupations",
+                                          "color": "#b0482c"
+                                    },
+                                    {
+                                          "key": "9 Occupations in manufacturing and utilities",
+                                          "color": "#9e1e05"
+                                    }
+                              ],
+                              "labelsPlacement": "wrapped",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 9,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 270,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "value",
+                                    "lineColor": "#ffaa00"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": true,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 0.9,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "2f062126-519d-4db4-b5d0-7b870e3f11e7",
+                        "name": "Participation Rate",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "maxFeatures": 1,
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "type": "indicatorWidget",
+                        "defaultSettings": {
+                              "topSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {}
+                              },
+                              "middleSection": {
+                                    "fontSize": 160,
+                                    "textInfo": {
+                                          "text": "{element/value}%"
+                                    }
+                              },
+                              "bottomSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {
+                                          "text": "2021 PART Rate"
+                                    }
+                              }
+                        },
+                        "comparison": "none",
+                        "valueField": "Participation_rate",
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "percentageFormat": {
+                              "name": "percentage",
+                              "prefix": false,
+                              "style": "percent",
+                              "useGrouping": true
+                        },
+                        "ratioFormat": {
+                              "name": "ratio",
+                              "prefix": false,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 2
+                        },
+                        "valueType": "feature",
+                        "noValueState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        }
+                  },
+                  {
+                        "id": "50b0cf24-e2f8-40a3-8105-4f45c035a7d5",
+                        "name": "Employment Rate ",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "maxFeatures": 1,
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "type": "indicatorWidget",
+                        "defaultSettings": {
+                              "topSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {}
+                              },
+                              "middleSection": {
+                                    "fontSize": 160,
+                                    "textInfo": {
+                                          "text": "{element/value}%"
+                                    }
+                              },
+                              "bottomSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {
+                                          "text": "2021 EMP Rate"
+                                    }
+                              }
+                        },
+                        "comparison": "none",
+                        "valueField": "Employment_rate",
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "percentageFormat": {
+                              "name": "percentage",
+                              "prefix": false,
+                              "style": "percent",
+                              "useGrouping": true
+                        },
+                        "ratioFormat": {
+                              "name": "ratio",
+                              "prefix": false,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 2
+                        },
+                        "valueType": "feature",
+                        "noValueState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        }
+                  },
+                  {
+                        "id": "0160f6bd-52e2-4024-842b-152dc8546dc8",
+                        "name": "Unemployment Rate",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "maxFeatures": 1,
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "type": "indicatorWidget",
+                        "defaultSettings": {
+                              "topSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {}
+                              },
+                              "middleSection": {
+                                    "fontSize": 160,
+                                    "textInfo": {
+                                          "text": "{element/value}%"
+                                    }
+                              },
+                              "bottomSection": {
+                                    "fontSize": 80,
+                                    "textInfo": {
+                                          "text": "2021 UNEMP Rate"
+                                    }
+                              }
+                        },
+                        "comparison": "none",
+                        "valueField": "Unemployment_rate",
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "percentageFormat": {
+                              "name": "percentage",
+                              "prefix": false,
+                              "style": "percent",
+                              "useGrouping": true
+                        },
+                        "ratioFormat": {
+                              "name": "ratio",
+                              "prefix": false,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 2
+                        },
+                        "valueType": "feature",
+                        "noValueState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        }
+                  },
+                  {
+                        "id": "074cfe57-3165-41b4-9d70-37d18e1e97df",
+                        "name": "Mun List",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "207ff801764642c6a8601d12208574fa",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [],
+                                    "maxFeatures": 1,
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "arcadeEnabled": {
+                              "isTrusted": true
+                        },
+                        "expression": "var UprMun = Upper($datapoint.Municipality);\r\n\r\nreturn {\r\n  textColor: '',\r\n  backgroundColor: '#7e8572',\r\n  separatorColor:'#021a1a',\r\n  selectionColor: '',\r\n  selectionTextColor: '',\r\n  attributes: {\r\n   mun: UprMun\r\n  }\r\n}\r\n",
+                        "type": "listWidget",
+                        "selectionMode": "single",
+                        "iconType": "none",
+                        "text": "<p style=\"text-align:center\"><span style=\"font-size:18px\"><strong>{expression/mun}</strong></span></p>\n\n<p style=\"text-align:center\">&nbsp;</p>\n",
+                        "showFilter": false
+                  },
+                  {
+                        "id": "372bd094-37a4-499a-8eea-712acfd33d8d",
+                        "name": "NAICS",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">2021 No. of Workers by Industry (NAICS)</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:</span>&nbsp;<a href=\"https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E\">StatsCan</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "42c8e1b55153494081d77e56b5547c95",
+                                          "layerId": 0
+                                    },
+                                    "filter": {
+                                          "type": "filterGroup",
+                                          "condition": "OR",
+                                          "rules": [
+                                                {
+                                                      "type": "filterGroup",
+                                                      "condition": "AND",
+                                                      "rules": [
+                                                            {
+                                                                  "type": "filterRule",
+                                                                  "field": {
+                                                                        "name": "Tenure",
+                                                                        "type": "string"
+                                                                  },
+                                                                  "operator": "not_equal",
+                                                                  "constraint": {
+                                                                        "type": "value",
+                                                                        "value": "Total"
+                                                                  }
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Year_Tenure ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Year_Tenure",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "staggered",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 9,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "100%",
+                              "integersOnly": false,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": true,
+                              "position": "right",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F11_Agriculture_forestry_fish",
+                                    "title": "Agriculture, forestry, fishing, hunting",
+                                    "lineColor": "#0d3b66"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F21_Mining_quarrying_and_oil_",
+                                    "title": "Mining, quarrying, oil & gas extraction",
+                                    "lineColor": "#274f71"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F22_Utilities",
+                                    "title": "Utilities",
+                                    "lineColor": "#41637c"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F23_Construction",
+                                    "title": "Construction",
+                                    "lineColor": "#5c7787"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F31_33_Manufacturing",
+                                    "title": "Manufacturing",
+                                    "lineColor": "#768b92"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F41_Wholesale_trade",
+                                    "title": "Wholesale trade",
+                                    "lineColor": "#909f9d"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F44_45_Retail_trade",
+                                    "title": "Retail trade",
+                                    "lineColor": "#abb3a8"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F48_49_Transportation_and_wareh",
+                                    "title": "Transportation, warehousing",
+                                    "lineColor": "#c5c7b3"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F51_Information_and_cultural_in",
+                                    "title": "Information, cultural industries",
+                                    "lineColor": "#dfdbbe"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F52_Finance_and_insurance",
+                                    "title": "Finance, insurance",
+                                    "lineColor": "#faf0ca"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F53_Real_estate_and_rental_and_",
+                                    "title": "Real estate, rental and leasing",
+                                    "lineColor": "#f0dbb6"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F54_Professional_scientific_an",
+                                    "title": "Professional, scientific, technical",
+                                    "lineColor": "#e7c6a2"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F55_Management_of_companies_and",
+                                    "title": "Mgmnt. of companies, enterprises",
+                                    "lineColor": "#deb18e"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F56_Administrative_and_support_",
+                                    "title": "Admin., waste mngnt. remediation services",
+                                    "lineColor": "#d59c7b"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F61_Educational_services",
+                                    "title": "Educational services",
+                                    "lineColor": "#cc8767"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F62_Health_care_and_social_assi",
+                                    "title": "Health care, social assistance",
+                                    "lineColor": "#c27253"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F71_Arts_entertainment_and_rec",
+                                    "title": "Arts, entertainment, recreation",
+                                    "lineColor": "#b95d40"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F72_Accommodation_and_food_serv",
+                                    "title": "Accommodation, food services",
+                                    "lineColor": "#b0482c"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F81_Other_services_except_publ",
+                                    "title": "Other services (except public admin.)",
+                                    "lineColor": "#a73318"
+                              },
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 0.9,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "F91_Public_administration",
+                                    "title": "Public administration",
+                                    "lineColor": "#9e1e05"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 1,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "ff84cca9-0b64-44a3-bd20-13b8f8efea1e",
+                        "name": "Municipality Targets",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "type": "mapWidget",
+                        "flashRepeats": 3,
+                        "itemId": "5cac839e430e43158eb509f9b175d62f",
+                        "mapTools": [
+                              {
+                                    "type": "bookmarksTool"
+                              },
+                              {
+                                    "type": "basemapGalleryTool"
+                              }
+                        ],
+                        "showNavigation": false,
+                        "showLocate": false,
+                        "showCompass": false,
+                        "showPopup": true,
+                        "scalebarStyle": "none",
+                        "groupSelect": "none"
+                  },
+                  {
+                        "id": "1a9ea8f0-2450-4886-9b4f-ff98d4a47a90",
+                        "name": "Employment",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Employment</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:&nbsp;<a href=\"https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E\">StatsCan</a></span></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [
+                                          {
+                                                "onStatisticField": "Employed",
+                                                "outStatisticFieldName": "Employed",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "Unemployed",
+                                                "outStatisticFieldName": "Unemployed",
+                                                "statisticType": "sum"
+                                          }
+                                    ],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "fields",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "category",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [
+                                    {
+                                          "key": "Employed",
+                                          "label": "Employed"
+                                    },
+                                    {
+                                          "key": "Unemployed",
+                                          "label": "Unemployed"
+                                    }
+                              ],
+                              "byCategoryColors": true,
+                              "colors": [
+                                    {
+                                          "key": "Employed",
+                                          "color": "#b0482c"
+                                    },
+                                    {
+                                          "key": "Unemployed",
+                                          "color": "#0c8cad"
+                                    }
+                              ],
+                              "labelsPlacement": "staggered",
+                              "labelRotation": 0
+                        },
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": false,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "value",
+                                    "lineColor": "#ffaa00"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 0.8,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "6d54c30e-8ab4-4729-998f-6e297c0b3d77",
+                        "name": "Labour Force Status",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Labour Force</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:</span>&nbsp;<a href=\"https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E\">StatsCan</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [],
+                                    "statisticDefinitions": [
+                                          {
+                                                "onStatisticField": "In_the_labour_force",
+                                                "outStatisticFieldName": "In_the_labour_force",
+                                                "statisticType": "sum"
+                                          },
+                                          {
+                                                "onStatisticField": "Not_in_the_labour_force",
+                                                "outStatisticFieldName": "Not_in_the_labour_force",
+                                                "statisticType": "sum"
+                                          }
+                                    ],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": true
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "fields",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "category",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [
+                                    {
+                                          "key": "In_the_labour_force",
+                                          "label": "In the labour force"
+                                    },
+                                    {
+                                          "key": "Not_in_the_labour_force",
+                                          "label": "Not in the labour force"
+                                    }
+                              ],
+                              "byCategoryColors": true,
+                              "colors": [
+                                    {
+                                          "key": "In the labour force",
+                                          "color": "#b0482c"
+                                    },
+                                    {
+                                          "key": "Not in the labour force",
+                                          "color": "#0c8cad"
+                                    }
+                              ],
+                              "labelsPlacement": "wrapped",
+                              "labelRotation": 30
+                        },
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": false,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "minimum": 0,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "value",
+                                    "lineColor": "#ffaa00"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "column",
+                              "fillAlphas": 0.8,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "none",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 8,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "d271664f-6e2b-4e06-a140-f2da05c8398d",
+                        "name": "Bank Rate",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Bank of Canada Interest Rates</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:</span>&nbsp;<a href=\"https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/#footnote-4\">Bank of Canada</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "1cb578a7fd3b43738187f8d222ee2439",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Date_Range ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Date_Range",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 30
+                        },
+                        "fontSize": 8,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "fontSize": 9,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "fontSize": 9,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Rate",
+                                    "title": "Rate",
+                                    "lineColor": "#b0482c"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "line",
+                              "fillAlphas": 0,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "round",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 6,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "9a0180bb-df60-4f01-85ec-3ce8c3e2287d",
+                        "name": "Mortgage Rate",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">5 -Year Fixed Mortgage Rates</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:</span>&nbsp;<a href=\"https://doi.org/10.25318/3410014501-eng\">StatsCan</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "c57d4876ae5a49e481fbbcc3ed277f2b",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Date_Range ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Date_Range",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 8,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "fontSize": 9,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "fontSize": 9,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "minimum": 0,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Fixed_5_Year",
+                                    "title": "Fixed 5 Year",
+                                    "lineColor": "#4c7c9e"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "line",
+                              "fillAlphas": 0,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "round",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 6,
+                              "connect": true
+                        }
+                  },
+                  {
+                        "id": "4e04b7df-1f0a-4d35-a149-f223b122d95c",
+                        "name": "Variable Mort Rate",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Estimated Variable Mortgage Rates</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:</span>&nbsp;<a href=\"https://www.bankofcanada.ca/rates/interest-rates/canadian-interest-rates/#footnote-4\">Bank of Canada</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "517d4d2023f24b229c52572d582beb56",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Date_Range ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Date_Range",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 8,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": true,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "fontSize": 9,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "fontSize": 9,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "minimum": 0,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Estimated_variable_mortgage_rat",
+                                    "title": "Estimated variable mortgage rate",
+                                    "lineColor": "#26ab4e"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "line",
+                              "fillAlphas": 0,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "round",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 6,
+                              "connect": true
+                        }
+                  }
+            ],
+            "header": {
+                  "selectors": [
+                        {
+                              "id": "253d65c1-ac77-442b-a890-d4108c116f57",
+                              "name": "Municipality",
+                              "caption": "Municipality",
+                              "showLastUpdate": false,
+                              "noDataState": {
+                                    "verticalAlignment": "middle",
+                                    "showCaption": true,
+                                    "showDescription": true
+                              },
+                              "noFilterState": {
+                                    "verticalAlignment": "middle",
+                                    "showCaption": true,
+                                    "showDescription": true
+                              },
+                              "events": [
+                                    {
+                                          "type": "selectionChanged",
+                                          "actions": [
+                                                {
+                                                      "targets": [
+                                                            {
+                                                                  "targetId": "074cfe57-3165-41b4-9d70-37d18e1e97df#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "ff84cca9-0b64-44a3-bd20-13b8f8efea1e#188b198393a-layer-1",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": false
+                                                            },
+                                                            {
+                                                                  "targetId": "1a9ea8f0-2450-4886-9b4f-ff98d4a47a90#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "50b0cf24-e2f8-40a3-8105-4f45c035a7d5#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "6d54c30e-8ab4-4729-998f-6e297c0b3d77#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "372bd094-37a4-499a-8eea-712acfd33d8d#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "dec504d0-dad9-460d-ba03-8cbad1be11e1#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "2f062126-519d-4db4-b5d0-7b870e3f11e7#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "targetId": "0160f6bd-52e2-4024-842b-152dc8546dc8#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ],
+                                                      "type": "filter"
+                                                },
+                                                {
+                                                      "targets": [
+                                                            {
+                                                                  "targetId": "ff84cca9-0b64-44a3-bd20-13b8f8efea1e",
+                                                                  "by": "geometry",
+                                                                  "requiresSelection": false
+                                                            }
+                                                      ],
+                                                      "type": "flashGeometry"
+                                                },
+                                                {
+                                                      "targets": [
+                                                            {
+                                                                  "targetId": "ff84cca9-0b64-44a3-bd20-13b8f8efea1e",
+                                                                  "by": "geometry",
+                                                                  "requiresSelection": false
+                                                            }
+                                                      ],
+                                                      "type": "zoom"
+                                                }
+                                          ]
+                                    }
+                              ],
+                              "presentationMode": "dropdown",
+                              "datasets": [
+                                    {
+                                          "type": "serviceDataset",
+                                          "name": "main",
+                                          "dataSource": {
+                                                "type": "layerDataSource",
+                                                "itemId": "5cac839e430e43158eb509f9b175d62f",
+                                                "layerId": "188b198393a-layer-1"
+                                          },
+                                          "groupByFields": [
+                                                "ADMIN_AREA_ABBREVIATION"
+                                          ],
+                                          "orderByFields": [
+                                                "ADMIN_AREA_ABBREVIATION ASC"
+                                          ],
+                                          "statisticDefinitions": [
+                                                {
+                                                      "onStatisticField": "ADMIN_AREA_ABBREVIATION",
+                                                      "outStatisticFieldName": "count_result",
+                                                      "statisticType": "count"
+                                                }
+                                          ],
+                                          "maxFeatures": 50,
+                                          "clientSideStatistics": false,
+                                          "outFields": [
+                                                "*"
+                                          ],
+                                          "returnDistinctValues": false,
+                                          "allowSourceDownload": false,
+                                          "allowSummaryDownload": false
+                                    }
+                              ],
+                              "type": "categorySelectorWidget",
+                              "category": {
+                                    "type": "groupByValues",
+                                    "labelOverrides": []
+                              },
+                              "selection": {
+                                    "operator": "equal",
+                                    "allowNone": true,
+                                    "noneLabel": "Select an Option",
+                                    "noneLabelPlacement": "first",
+                                    "type": "single",
+                                    "defaultSelection": "first"
+                              },
+                              "displayType": "list",
+                              "showFilter": false,
+                              "maxSize": "compact"
+                        }
+                  ],
+                  "type": "header",
+                  "subtitlePlacement": "sameLine",
+                  "logoSize": "small",
+                  "showMargin": true,
+                  "backgroundImageSizing": "fit-height",
+                  "normalBackgroundImagePlacement": "left",
+                  "horizontalBackgroundImagePlacement": "top",
+                  "showSignOutMenu": true,
+                  "menuLinks": []
+            },
+            "layout": {
+                  "type": "dockingLayout",
+                  "rootElement": {
+                        "width": 1,
+                        "height": 1,
+                        "id": "e21214e4-1c29-455a-9e18-6efea5a27ab9",
+                        "elements": [
+                              {
+                                    "width": 0.32415162663286573,
+                                    "height": 1,
+                                    "id": "1ac1149c-62db-4d30-9eba-be0ea87f85cc",
+                                    "elements": [
+                                          {
+                                                "width": 1,
+                                                "height": 0.6722158438576348,
+                                                "type": "itemLayoutElement",
+                                                "id": "372bd094-37a4-499a-8eea-712acfd33d8d"
+                                          },
+                                          {
+                                                "width": 1,
+                                                "height": 0.32778415614236517,
+                                                "type": "itemLayoutElement",
+                                                "id": "dec504d0-dad9-460d-ba03-8cbad1be11e1"
+                                          }
+                                    ],
+                                    "type": "stackLayoutElement",
+                                    "orientation": "row"
+                              },
+                              {
+                                    "width": 0.6758483733671338,
+                                    "height": 1,
+                                    "id": "ad071127-4d7d-47ac-95cf-063d3ba5eef8",
+                                    "elements": [
+                                          {
+                                                "width": 1,
+                                                "height": 0.573478760045924,
+                                                "id": "a7c30bc2-bfd2-46c0-8984-486428f9ed97",
+                                                "elements": [
+                                                      {
+                                                            "width": 0.3339359203553595,
+                                                            "height": 1,
+                                                            "type": "itemLayoutElement",
+                                                            "id": "d271664f-6e2b-4e06-a140-f2da05c8398d"
+                                                      },
+                                                      {
+                                                            "width": 0.32670881861181084,
+                                                            "height": 1,
+                                                            "type": "itemLayoutElement",
+                                                            "id": "4e04b7df-1f0a-4d35-a149-f223b122d95c"
+                                                      },
+                                                      {
+                                                            "width": 0.33935526103283,
+                                                            "height": 1,
+                                                            "type": "itemLayoutElement",
+                                                            "id": "9a0180bb-df60-4f01-85ec-3ce8c3e2287d"
+                                                      }
+                                                ],
+                                                "type": "groupLayoutElement",
+                                                "orientation": "col"
+                                          },
+                                          {
+                                                "width": 1,
+                                                "height": 0.42652123995407576,
+                                                "id": "bbee893f-6b0b-4ca5-ab08-4fab6e3abb8a",
+                                                "elements": [
+                                                      {
+                                                            "width": 0.5,
+                                                            "height": 1,
+                                                            "id": "1598fcd1-cb43-4ddf-8e36-7e98df38e403",
+                                                            "elements": [
+                                                                  {
+                                                                        "width": 1,
+                                                                        "height": 0.1403443346933121,
+                                                                        "type": "itemLayoutElement",
+                                                                        "id": "074cfe57-3165-41b4-9d70-37d18e1e97df"
+                                                                  },
+                                                                  {
+                                                                        "width": 1,
+                                                                        "height": 0.32051725154743876,
+                                                                        "id": "2cd7c933-97fe-4660-b9a2-b76eafd4d3be",
+                                                                        "elements": [
+                                                                              {
+                                                                                    "width": 0.31514870346429286,
+                                                                                    "height": 1,
+                                                                                    "type": "itemLayoutElement",
+                                                                                    "id": "2f062126-519d-4db4-b5d0-7b870e3f11e7"
+                                                                              },
+                                                                              {
+                                                                                    "width": 0.3585811724404882,
+                                                                                    "height": 1,
+                                                                                    "type": "itemLayoutElement",
+                                                                                    "id": "50b0cf24-e2f8-40a3-8105-4f45c035a7d5"
+                                                                              },
+                                                                              {
+                                                                                    "width": 0.32627012409521916,
+                                                                                    "height": 1,
+                                                                                    "type": "itemLayoutElement",
+                                                                                    "id": "0160f6bd-52e2-4024-842b-152dc8546dc8"
+                                                                              }
+                                                                        ],
+                                                                        "type": "groupLayoutElement",
+                                                                        "orientation": "col"
+                                                                  },
+                                                                  {
+                                                                        "width": 1,
+                                                                        "height": 0.5391384137592494,
+                                                                        "type": "itemLayoutElement",
+                                                                        "id": "ff84cca9-0b64-44a3-bd20-13b8f8efea1e"
+                                                                  }
+                                                            ],
+                                                            "type": "groupLayoutElement",
+                                                            "orientation": "row"
+                                                      },
+                                                      {
+                                                            "width": 0.5,
+                                                            "height": 1,
+                                                            "id": "1c06edd3-a4a2-46a1-87dd-c03ccf46ce14",
+                                                            "elements": [
+                                                                  {
+                                                                        "width": 0.5,
+                                                                        "height": 1,
+                                                                        "type": "itemLayoutElement",
+                                                                        "id": "6d54c30e-8ab4-4729-998f-6e297c0b3d77"
+                                                                  },
+                                                                  {
+                                                                        "width": 0.5,
+                                                                        "height": 1,
+                                                                        "type": "itemLayoutElement",
+                                                                        "id": "1a9ea8f0-2450-4886-9b4f-ff98d4a47a90"
+                                                                  }
+                                                            ],
+                                                            "type": "groupLayoutElement",
+                                                            "orientation": "col"
+                                                      }
+                                                ],
+                                                "type": "stackLayoutElement",
+                                                "orientation": "col"
+                                          }
+                                    ],
+                                    "type": "stackLayoutElement",
+                                    "orientation": "row"
+                              }
+                        ],
+                        "type": "stackLayoutElement",
+                        "orientation": "col"
+                  }
+            },
+            "type": "desktop",
+            "settings": {
+                  "allowElementResizing": true,
+                  "allowElementExpansion": true,
+                  "allowReset": false
+            }
+      },
+      "elementMappings": {}
+}
