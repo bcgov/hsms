@@ -463,9 +463,7 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, loo
                   }
                 }
               }
-              
             }
-            
           }
           
           #create year_tenure column

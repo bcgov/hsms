@@ -36,6 +36,10 @@ prep_CMHC_Primary_Rental <- function(tablePath, series_list = NULL, vac_dim_list
   }
   if(is.null(muni_vec))
   {
+    muni_df <- read.xlsx(muni_tb)
+    
+    muni_vec <- setNames(muni_df$CSDuid, muni_df$CSDname)
+    
     muni_vec <- c("59" = "British Columbia", "5909052" = "Abbotsford",
                   "5915011" = "Delta", "5915022" = "Vancouver",
                   "5915043" = "Port Moody", "5915046" = "North Vancouver - District",
