@@ -109,7 +109,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "98a8eaa2d56f49528c18af0514080822",
+                                          "itemId": "38bede8186924b249507f7ebf7298452",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -414,7 +414,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "itemId": "ae45cf7a008748cd97ec49606a1a0059",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -498,7 +498,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "itemId": "ae45cf7a008748cd97ec49606a1a0059",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -582,7 +582,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "itemId": "ae45cf7a008748cd97ec49606a1a0059",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -666,7 +666,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "207ff801764642c6a8601d12208574fa",
+                                          "itemId": "338beb76ef7c47e6b2c27f1f5b64f022",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -713,7 +713,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "42c8e1b55153494081d77e56b5547c95",
+                                          "itemId": "add168e95c3e44dcaf973d1ea8341931",
                                           "layerId": 0
                                     },
                                     "filter": {
@@ -1287,7 +1287,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "itemId": "ae45cf7a008748cd97ec49606a1a0059",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -1489,7 +1489,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "1390309607a342e89f9179c97164cc35",
+                                          "itemId": "ae45cf7a008748cd97ec49606a1a0059",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -1692,7 +1692,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "1cb578a7fd3b43738187f8d222ee2439",
+                                          "itemId": "8e409263c2e94fb1bedfe6da367e01a3",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -1870,7 +1870,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "c57d4876ae5a49e481fbbcc3ed277f2b",
+                                          "itemId": "fbd1570a3ea34e4db5e93904655107be",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -2049,7 +2049,7 @@
                                     "name": "main",
                                     "dataSource": {
                                           "type": "layerDataSource",
-                                          "itemId": "517d4d2023f24b229c52572d582beb56",
+                                          "itemId": "7164ca96ddaa455b80e8c13e136ac4cf",
                                           "layerId": 0
                                     },
                                     "groupByFields": [],
@@ -2206,6 +2206,182 @@
                               "bulletSize": 6,
                               "connect": true
                         }
+                  },
+                  {
+                        "id": "cd532347-6c63-4851-93e7-3d38745145eb",
+                        "name": "Inflation Rate",
+                        "caption": "<div style=\"background-color:#7e8572; border-bottom:2px solid #787878; margin-left:-8px; margin-right:-8px; margin-top:-5px; padding:0.1rem\">\n<h6 style=\"text-align:left\"><span style=\"font-size:12px\">Consumer Price Index</span></h6>\n</div>\n\n<p style=\"text-align:right\"><span style=\"font-size:8px\"><span style=\"color:#adadad\">Source:</span>&nbsp;<a href=\"https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1810000402\">StatsCan</a></span></p>\n",
+                        "showLastUpdate": false,
+                        "noDataState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "noFilterState": {
+                              "verticalAlignment": "middle",
+                              "showCaption": true,
+                              "showDescription": true
+                        },
+                        "datasets": [
+                              {
+                                    "type": "serviceDataset",
+                                    "name": "main",
+                                    "dataSource": {
+                                          "type": "layerDataSource",
+                                          "itemId": "14c22bf16cde442f931a3d6e0028a1e3",
+                                          "layerId": 0
+                                    },
+                                    "groupByFields": [],
+                                    "orderByFields": [
+                                          "Date_Range ASC"
+                                    ],
+                                    "statisticDefinitions": [],
+                                    "clientSideStatistics": false,
+                                    "outFields": [
+                                          "*"
+                                    ],
+                                    "returnDistinctValues": false,
+                                    "allowSourceDownload": false,
+                                    "allowSummaryDownload": false
+                              }
+                        ],
+                        "selectionMode": "single",
+                        "categoryType": "features",
+                        "type": "serialChartWidget",
+                        "category": {
+                              "fieldName": "Date_Range",
+                              "nullLabel": "null",
+                              "blankLabel": "blank",
+                              "defaultColor": "#d6d6d6",
+                              "nullColor": "#d6d6d6",
+                              "blankColor": "#d6d6d6",
+                              "labelOverrides": [],
+                              "byCategoryColors": false,
+                              "labelsPlacement": "default",
+                              "labelRotation": 0
+                        },
+                        "fontSize": 8,
+                        "valueFormat": {
+                              "name": "value",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "labelFormat": {
+                              "name": "label",
+                              "prefix": true,
+                              "style": "decimal",
+                              "useGrouping": true,
+                              "maximumFractionDigits": 1
+                        },
+                        "datePeriodPatterns": [
+                              {
+                                    "period": "ss",
+                                    "pattern": "HH:mm:ss"
+                              },
+                              {
+                                    "period": "mm",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "hh",
+                                    "pattern": "HH:mm"
+                              },
+                              {
+                                    "period": "DD",
+                                    "pattern": "MMM d"
+                              },
+                              {
+                                    "period": "MM",
+                                    "pattern": "MMM"
+                              },
+                              {
+                                    "period": "YYYY",
+                                    "pattern": "yyyy"
+                              }
+                        ],
+                        "chartScrollbar": {
+                              "enabled": false,
+                              "dragIcon": "dragIconRoundSmall",
+                              "dragIconHeight": 20,
+                              "dragIconWidth": 20,
+                              "scrollbarHeight": 15
+                        },
+                        "categoryAxis": {
+                              "titleRotation": 0,
+                              "gridPosition": "start",
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "parseDates": false,
+                              "minPeriod": "DD"
+                        },
+                        "valueAxis": {
+                              "titleRotation": 270,
+                              "gridThickness": 1,
+                              "gridAlpha": 0.15,
+                              "axisThickness": 1,
+                              "axisAlpha": 0.5,
+                              "labelsEnabled": true,
+                              "stackType": "none",
+                              "integersOnly": false,
+                              "logarithmic": false
+                        },
+                        "legend": {
+                              "enabled": false,
+                              "position": "bottom",
+                              "markerSize": 15,
+                              "markerType": "circle",
+                              "align": "center",
+                              "labelWidth": 100,
+                              "valueWidth": 0
+                        },
+                        "seriesOrderByFields": [],
+                        "graphs": [
+                              {
+                                    "lineColorField": "_lineColor_",
+                                    "fillColorsField": "_fillColor_",
+                                    "type": "column",
+                                    "fillAlphas": 1,
+                                    "lineAlpha": 1,
+                                    "lineThickness": 1,
+                                    "bullet": "none",
+                                    "bulletAlpha": 1,
+                                    "bulletBorderAlpha": 0,
+                                    "bulletBorderThickness": 2,
+                                    "showBalloon": true,
+                                    "bulletSize": 8,
+                                    "connect": true,
+                                    "valueField": "Inflation_Rate",
+                                    "title": "Inflation Rate",
+                                    "lineColor": "#0c8cad"
+                              }
+                        ],
+                        "guides": [],
+                        "splitBy": {
+                              "defaultColor": "#d6d6d6",
+                              "seriesProperties": []
+                        },
+                        "rotate": false,
+                        "commonGraphProperties": {
+                              "lineColorField": "_lineColor_",
+                              "fillColorsField": "_fillColor_",
+                              "type": "line",
+                              "fillAlphas": 0,
+                              "lineAlpha": 1,
+                              "lineThickness": 1,
+                              "bullet": "round",
+                              "bulletAlpha": 1,
+                              "bulletBorderAlpha": 0,
+                              "bulletBorderThickness": 2,
+                              "labelText": "[[value]]",
+                              "showBalloon": true,
+                              "bulletSize": 6,
+                              "connect": true
+                        }
                   }
             ],
             "header": {
@@ -2323,6 +2499,17 @@
                                                                               "targetName": "Municipality"
                                                                         }
                                                                   ]
+                                                            },
+                                                            {
+                                                                  "targetId": "cd532347-6c63-4851-93e7-3d38745145eb#main",
+                                                                  "by": "whereClause",
+                                                                  "requiresSelection": true,
+                                                                  "fieldMap": [
+                                                                        {
+                                                                              "sourceName": "ADMIN_AREA_ABBREVIATION",
+                                                                              "targetName": "Municipality"
+                                                                        }
+                                                                  ]
                                                             }
                                                       ],
                                                       "type": "filter"
@@ -2419,7 +2606,7 @@
                         "id": "e21214e4-1c29-455a-9e18-6efea5a27ab9",
                         "elements": [
                               {
-                                    "width": 0.32415162663286573,
+                                    "width": 0.2658446545969299,
                                     "height": 1,
                                     "id": "1ac1149c-62db-4d30-9eba-be0ea87f85cc",
                                     "elements": [
@@ -2440,7 +2627,7 @@
                                     "orientation": "row"
                               },
                               {
-                                    "width": 0.6758483733671338,
+                                    "width": 0.7341553454030696,
                                     "height": 1,
                                     "id": "ad071127-4d7d-47ac-95cf-063d3ba5eef8",
                                     "elements": [
@@ -2450,19 +2637,25 @@
                                                 "id": "a7c30bc2-bfd2-46c0-8984-486428f9ed97",
                                                 "elements": [
                                                       {
-                                                            "width": 0.3339359203553595,
+                                                            "width": 0.33333333333333337,
+                                                            "height": 1,
+                                                            "type": "itemLayoutElement",
+                                                            "id": "cd532347-6c63-4851-93e7-3d38745145eb"
+                                                      },
+                                                      {
+                                                            "width": 0.222623946903573,
                                                             "height": 1,
                                                             "type": "itemLayoutElement",
                                                             "id": "d271664f-6e2b-4e06-a140-f2da05c8398d"
                                                       },
                                                       {
-                                                            "width": 0.32670881861181084,
+                                                            "width": 0.21780587907454055,
                                                             "height": 1,
                                                             "type": "itemLayoutElement",
                                                             "id": "4e04b7df-1f0a-4d35-a149-f223b122d95c"
                                                       },
                                                       {
-                                                            "width": 0.33935526103283,
+                                                            "width": 0.2262368406885533,
                                                             "height": 1,
                                                             "type": "itemLayoutElement",
                                                             "id": "9a0180bb-df60-4f01-85ec-3ce8c3e2287d"
