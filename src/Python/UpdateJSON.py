@@ -11,11 +11,9 @@ import getpass
 
 def login():
     """Logs User in to Arcpy tools and to their ArcGIS Online account.
-
-    Returns the gis object for ArcGIS API for Python.
     """
     global user 
-    
+    global gis
     print("Please login to ArcGIS Online")
     
     while True:
@@ -32,8 +30,6 @@ def login():
     user = gis.users.me #user object to point to arcgis online account currently logged in
     arcpy.SignInToPortal("https://www.arcgis.com", username , password)
     print("Signed in Sucessfully")
-
-    return gis
 
 def backup_gdp(dev_gdb, prod_gdb):
     """backup_gdb(dev_gdb, prod_gdb)
@@ -74,7 +70,6 @@ def dev_widget_info(dev_app):
     """
     
     global ref_table
-    global columns
 
     print("Getting DEV Json data")
     
@@ -104,7 +99,8 @@ def get_dev_data():
     """get_dev_data()
     
     Gets the Title of all of the features layers in the table from their id.
-    Note that the Feature name will not contain the _DEV suffix since it is the title of the layer not the Hosted Feature."""
+    Note that the Feature name will not contain the _DEV suffix since it is the title of the layer not the Hosted Feature.
+    """
     
     global ref_table
     
@@ -135,8 +131,6 @@ def uploadAgolLayers(folder, workspace, isDev = False, share_groups = None, new_
     new_description (str): description for the hosted feature layer. Default is None
     source_field (str): Name of source field in Feature Classes
     """
-    
-    global user
     
     aprx = arcpy.mp.ArcGISProject(r"W:\mtic\vic\rpd\Workarea\Working\EBORTHIS\AGOL UPLOAD\AGOL UPLOAD.aprx")
     m = aprx.listMaps('UPLOAD LAYERS')[0]
@@ -268,9 +262,6 @@ def get_prod_data(folder_name:str):
     folder_name (str): name of folder where prod data is located
     """
 
-    global ref_table
-    global user
-
     print("Getting Prod Data")
     
     folder_items = user.items(folder=folder_name, max_items=1000) # get all items in folder
@@ -367,9 +358,8 @@ def push_to_prod(app_csv, backup_directory):
     app_csv (str): path to table with columns Name, Dev ID and Prod ID. ID columns have ArcGIS Online IDs for applications
     backup_directory (str): filepath to json backup folder
     """
-    global ref_table
-    global gis
     global columns
+    global ref_table
 
     columns = ["Widget Name", "Widget Type", "DEV itemID", "Feature Name", "PROD itemID"]
 
@@ -380,7 +370,7 @@ def push_to_prod(app_csv, backup_directory):
     hous_gdb_dev = r"W:\mtic\vic\rpd\Workarea\ArcGIS_Online\OHCS\Data\Geodatabases\HOUS_DEV.gdb"
     hous_gdb = r"W:\mtic\vic\rpd\Workarea\ArcGIS_Online\OHCS\Data\Geodatabases\HOUS.gdb"
     
-    gis = login()
+    login()
     
     gdb_list = []
     #ask user which gdb's they would like to update
@@ -452,7 +442,8 @@ def revert_app(app_name, backup_directory):
     app_name (str): Name of Application
     backup_directory (str): filepath to json backup folder
     """
-    
+    login()
+
     file_name = app_name + ".json"
     backup_file = os.path.join(backup_directory, file_name)
 
@@ -498,9 +489,11 @@ def revert_gdb(gdb_dir, backup_directory):
 #muni_gdb = r"W:\mtic\vic\rpd\Workarea\ArcGIS_Online\OHCS\Data\Geodatabases\Municipality_Targets.gdb"
 #prod_gdb = r"W:\mtic\vic\rpd\Workarea\ArcGIS_Online\OHCS\Data\Geodatabases\StatsCan_DEV.gdb"
 
-#gis = login()
+#login()
 #uploadAgolLayers("HSMS_DEV",dev_gdb, isDev=True, new_tag="HSMS", share_groups=["HSMS Dev"], source_field="data_source")
 
 app_csv = r"W:\mtic\vic\rpd\Workarea\ArcGIS_Online\OHCS\Data\Documents\HSMS App IDs.csv"
 backup_directory = r"W:\mtic\vic\rpd\Workarea\ArcGIS_Online\OHCS\Analysis\Git\HSMS\hsms\res\Apps"
 push_to_prod(app_csv, backup_directory)
+
+#revert_app("Economic Indicators", backup_directory)
