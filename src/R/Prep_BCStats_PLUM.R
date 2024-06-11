@@ -25,8 +25,24 @@
 #input_path: "C:/Documents/censusprofile imports"
 #prep_BCStats_PLUM(out_path, census_path, table_path, input_path)
 
-prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, lookup_table = NULL, worksheet_list = NULL, muni_inc = NULL)
+prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, lookup_table = NULL, worksheet_list = NULL, muni_inc = NULL, inc_reg = FALSE)
 {
+  #TEMP
+  #-----------------
+  #out_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/PLUM/2021/"
+  #census_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/R_Output/CensusTables/" #should be the output of the tables produced in the Prep_BCStats_Census Script
+  #table_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/PLUM/Raw Import/ord-08588-g8n3z6.xlsx"
+  #input_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/StatsCan/Raw Import/CensusImports"
+  #inc_reg<- FALSE
+  
+  #split_sheet_vec <- split(sheet_names, cut(seq_along(sheet_names), 3, labels = FALSE))
+  #folder_num <- 1
+  #worksheet_list <- c("RD5915")
+  #folder_path <- paste0(out_path,"Part ",1,"/")
+  #muni_inc <- c("5909052", "5915011", "5915022", "5915043", "5915046", "5915055", "5917021", "5917030", "5917034", "5933042", "59")
+  #-----------------
+  
+  
   if (!require("readxl"))
   {
     message("Package 'readxl' not found. Please install it using install.packages('package1').")
@@ -64,8 +80,8 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, loo
       stop()
     }
   )
-  prep_BCStats_Census(input_path, census_path)
-  
+  #prep_BCStats_Census(input_path, census_path)
+  all_muni <- FALSE
   
   if(is.null(lookup_table))
   {
@@ -76,11 +92,16 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, loo
   {
     worksheet_list <- c("RD5917", "RD5909", "RD5915", "RD5933", "PR_BC")
   }
-  if(is.null(muni_inc))
+  if(is.null(muni_inc))#if no muni list supplied, run for all muni's and filter by type
   {
-    muni_inc <- c("5909052", "5915011", "5915022", "5915043", "5915046", "5915055", "5917021", "5917030", "5917034", "5933042", "59")
+    reg_type <- c("CY","DM","VL","T","TWL","TAL","IM","NL")
+    all_muni <- TRUE
   }
-  
+  if(inc_reg)
+  {
+    reg_type <- c(reg_type,"RDA")
+  }
+
   colnames_inc <- c("Total", "Owners", "Renters")
   
   lookup_tables_list <- split(lookup_table,lookup_table$V1)
@@ -89,36 +110,67 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, loo
           
   for (sheet in worksheet_list)
   {
-    #sheet <- "RD5915"
+    print(sheet)
+    if (sheet != "Metadata_Definitions" & sheet != "Notes_Footnotes")
+    {
+    #sheet <- "RD5907"
     plum_table <- read_excel(table_path, sheet, col_names = FALSE)
   
-    plum_table[1:7, 1] <- plum_table[1:7, 2]
+    plum_table[1:6, 1] <- plum_table[1:6, 2]
     plum_table <- plum_table[, -2]
     
     #delete columns that aren't Total, Owners, Renters
     cols_to_remove <- c()
     
-    for (cl in 2:ncol(plum_table))
+    for (cl in 3:ncol(plum_table))
     {
-      current_stat <- plum_table[8, cl]
-      current_muni <- plum_table[2, cl]
-      
-      if (!(current_muni %in% muni_inc) | !(current_stat %in% colnames_inc))
+      current_stat <- plum_table[7, cl]
+      current_muni <- plum_table[[1, cl]]
+      current_type <- plum_table[3, cl]
+      #different queries if all muni's or a list of muni's
+      if(all_muni)
       {
-        cols_to_remove <- c(cols_to_remove, cl)
+        if(!(current_type %in% reg_type) | !(current_stat %in% colnames_inc))
+        {
+          #print(paste(current_muni,":",current_type))
+          cols_to_remove <- c(cols_to_remove, cl)
+        }
+      } else
+      {
+        if(!(current_muni %in% muni_inc) | !(current_stat %in% colnames_inc))
+        {
+          cols_to_remove <- c(cols_to_remove, cl)
+        }
       }
+      
       if (current_muni == "5915046")
       {
-        #print(plum_table[3,cl])
-        plum_table[3, cl] <- "North Vancouver - District"
+        plum_table[2, cl] <- "North Vancouver - District"
       }
+      if (current_muni == "5915051")
+      {
+        plum_table[2, cl] <- "North Vancouver - City"
+      }
+      if (current_muni == "5915001")
+      {
+        plum_table[2, cl] <- "Langley - District"
+      }
+      if (current_muni == "5915002")
+      {
+        plum_table[2, cl] <- "Langley - City"
+      }
+      
     }
+    #insert_table <- plum_table
+    #plum_table <- fix_rd_names(plum_table)
     
     if (length(cols_to_remove) > 0)
     {
       plum_table <- plum_table[, -cols_to_remove]
     }
-    
+    #print(ncol(plum_table))
+    if (ncol(plum_table) > 2)
+    {
     topic_string <- "Remove"
     
     plum_table <- cbind('Census Characteristic' = character(nrow(plum_table)), plum_table)
@@ -222,7 +274,7 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, loo
       }
     }
     
-    plum_table <- plum_table[-c(1,2,4,5,6), ]
+    plum_table <- plum_table[-c(1,3,4,5), ]
     head_plum_table <- plum_table[1:3, ]
     
     plum_table_list <- split(plum_table, plum_table$Topic)
@@ -364,124 +416,11 @@ prep_BCStats_PLUM <- function(out_path, census_path, table_path, input_path, loo
           tr_split_table <- as.data.frame(tr_split_table)
           write.xlsx(tr_split_table, out_file, row.names = FALSE)
         }
-        
-        if(sheet_num == length(worksheet_list))
-        {
-          #append onto equivalent census table?
-          #check each column in tr_split_table and find a match in census_table
-          read_file <- file.path(census_path, paste0(table_name_str, ".xlsx"))
-          census_table <- read_excel(read_file)
-          
-          temp_table <- data.frame(matrix(nrow = nrow(tr_split_table), ncol = ncol(census_table)))
-          colnames(temp_table) <- colnames(census_table)
-          
-          for (cp in 1:ncol(tr_split_table))
-          {
-            plum_field <- colnames(tr_split_table)[cp]
-            for (cc in 1:ncol(census_table))
-            {
-              census_field <- colnames(census_table)[cc]
-              if (plum_field == census_field)
-              {
-                #add col to temp_table at index cc
-                temp_table[,cc] <- tr_split_table[,cp]
-              }
-            }
-          }
-          census_table <- rbind(census_table, temp_table)
-          
-          census_table <- as.data.frame(census_table)
-          
-          if (table_name_str == "Householdcharacteristics")
-          {
-            #create headship column
-            census_table$Headship <- 0
-            
-            for (k in 1:nrow(census_table))
-            {
-              households <- as.numeric(census_table[k,8])
-              population <- as.numeric(census_table$`Population-Total`[k])
-              
-              head_val <- households / population
-              head_val <- format(round(head_val, 3), nsmall = 3)
-              head_val <- as.numeric(head_val)
-              
-              census_table$Headship[k] <- head_val
-              
-            }
-          }
-          
-          if (table_name_str == "Householdanddwellingcharacteristics")
-          {
-            print("Adding percent change")
-            #Create Cols for each Per change
-            census_table <- insert_col(census_table, 13, "Total Household by Size % Change")
-            census_table <- insert_col(census_table, 15, "1 Person % Change")
-            census_table <- insert_col(census_table, 17, "2 Persons % Change")
-            census_table <- insert_col(census_table, 19, "3 Persons % Change")
-            census_table <- insert_col(census_table, 21, "4 Persons % Change")
-            census_table <- insert_col(census_table, 23, "5 or More Persons % Change")
-            
-            #calculate percent change from 2006
-            #go row by row
-            for (rw in 1:nrow(census_table))
-            {
-              #get current muni, year, tenure
-              curr_muni <- census_table[rw, 1]
-              curr_year <- census_table[rw, 2]
-              curr_tenure <- census_table[rw, 3]
-              
-              if (curr_year == 2006)
-              {
-                for (value in c(14, 16, 18, 20, 22, 24))
-                {
-                  census_table[rw,value] <- 0
-                }
-              } else
-              {
-                #go row by row again and search for muni then 2006 then tenure
-                check_start <- 1
-                for (ch_rw in check_start:nrow(census_table))
-                {
-                  ch_muni <- census_table[ch_rw, 1]
-                  ch_year <- census_table[ch_rw, 2]
-                  ch_tenure <- census_table[ch_rw, 3]
-                  
-                  if (curr_muni == ch_muni && ch_year == 2006 && curr_tenure == ch_tenure)
-                  {
-                    
-                    for (value in c(13, 15, 17, 19, 21, 23))
-                    {
-                      ch_val <- value + 1
-                      #found 2006 value row to compare
-                      final <- census_table[rw, value]
-                      initial <- census_table[ch_rw,value]
-                      
-                      per_val <- (final-initial)/initial * 100
-                      census_table[rw,ch_val] <- round(per_val,1)
-                    }
-                  }
-                }
-              }
-            }
-          }
-          
-          #create year_tenure column
-          census_table$`Year_Tenure` <- "."
-          
-          for (yt in 1:nrow(census_table))
-          {
-            add_string <- paste(census_table$Date_Range[yt], census_table$Tenure[yt])
-            census_table$`Year_Tenure`[yt] <- add_string
-          }
-          
-          print(paste("Adding plum data to", table_name_str))
-          census_file <- file.path(census_path, paste0(table_name_str, ".xlsx"))
-          write.xlsx(census_table, census_file, row.names = FALSE)
-        }
       }
     }
     sheet_num <- sheet_num + 1
+    }
+    }
   }
   print("Process Complete")
 }

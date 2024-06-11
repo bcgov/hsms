@@ -544,3 +544,25 @@ add_munis <- function(in_table, muni_xlsx, copy_muni, sheet_num = 1)
   
   return(in_table)
 }
+
+#replaces statsCan RDA Names with ADMIN_ABBR
+fix_rd_names <- function(in_table)
+{
+  #in_table <- insert_table
+  lookup_path <- "W:/mtic/vic/rpd/Workarea/ArcGIS_Online/OHCS/Data/Tables/All_CSDs.xlsx"
+  lookup_table <- read_excel(lookup_path,"RDs")
+  
+  lookup_list <- setNames(as.list(lookup_table$Python),lookup_table$StatsCan)
+  #print(lookup_list)
+  for(col in 3:ncol(in_table))
+  {
+    current_muni <- in_table[[2,col]]
+    if(current_muni %in% names(lookup_list))
+    {
+      replace_muni <- lookup_list[[current_muni]]
+      print(paste("Changing:",current_muni,"to: ",replace_muni))
+      in_table[2,col] <- replace_muni
+    }
+  }
+  return(in_table)
+}
